@@ -8,7 +8,7 @@
 @include mat-core();
 
 // Define a theme.
-$primary: mat-palette($mat-teal);
+$primary: mat-palette($mat-teal, 800);
 $accent: mat-palette($mat-deep-orange);
 
 $theme: mat-light-theme($primary, $accent);

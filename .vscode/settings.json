@@ -1,7 +1,13 @@
 {
     "cSpell.words": [
+        "Datepicker",
+        "Paginator",
+        "codelyzer",
         "devkit",
+        "jasminewd",
+        "sidenav",
         "styleext",
-        "theming"
+        "theming",
+        "tslib"
     ]
 }
