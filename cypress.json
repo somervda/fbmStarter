@@ -1,9 +1,9 @@
 {
-    "baseUrl": "https://fbmstarter.firebaseapp.com/",
-    "env": {
-      "testuser": "test01@comcast.net",
-      "password": "password"
-    },
-    "requestTimeout": 10000,
-    "defaultCommandTimeout": 8000
-  }
+  "baseUrl": "http://localhost:4200/",
+  "env": {
+    "testuser": "test01@comcast.net",
+    "password": "password"
+  },
+  "requestTimeout": 10000,
+  "defaultCommandTimeout": 8000
+}
