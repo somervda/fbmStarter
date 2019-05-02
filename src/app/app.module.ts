@@ -23,13 +23,21 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from "@angular/material/card";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
+
+import { NgbCarouselModule } from "@ng-bootstrap/ng-bootstrap";
 import "hammerjs";
-import { HomeComponent } from './home/home.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { AboutComponent } from './about/about.component';
+
+import { HomeComponent } from "./home/home.component";
+import { NotfoundComponent } from "./notfound/notfound.component";
+import { AboutComponent } from "./about/about.component";
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotfoundComponent, AboutComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    NotfoundComponent,
+    AboutComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -51,7 +59,8 @@ import { AboutComponent } from './about/about.component';
     AppRoutingModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    NgbCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
