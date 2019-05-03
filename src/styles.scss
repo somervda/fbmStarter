@@ -9,6 +9,9 @@
 // Include non-theme styles for core.
 @include mat-core();
 
+// $primary: mat-palette($mat-indigo);
+// $accent: mat-palette($mat-pink);
+
 // Define a theme.
 $primary: mat-palette($mat-teal, 800);
 $accent: mat-palette($mat-deep-orange);
