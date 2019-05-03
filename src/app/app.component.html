@@ -1,5 +1,6 @@
 <mat-sidenav-container fullscreen>
-  <mat-sidenav #sidenav (click)="sidenav.toggle()">
+  <!-- add this to the mat-sidebar tag to have menu auto close (click)="sidenav.toggle()" -->
+  <mat-sidenav #sidenav>
     <mat-nav-list>
       <a mat-list-item routerLink="/">
         <mat-icon>home</mat-icon>
