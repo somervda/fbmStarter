@@ -15,7 +15,8 @@ import {
   MatSidenavModule,
   MatSortModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatSnackBarModule
 } from "@angular/material";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatButtonModule } from "@angular/material/button";
@@ -60,7 +61,8 @@ import { AboutComponent } from "./about/about.component";
     MatSelectModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    NgbCarouselModule
+    NgbCarouselModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
