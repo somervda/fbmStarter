@@ -2,6 +2,13 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 
+import { AngularFireModule } from "@angular/fire";
+
+import { environment } from "../environments/environment";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFireStorageModule } from "@angular/fire/storage";
+
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import {
@@ -31,13 +38,15 @@ import "hammerjs";
 import { HomeComponent } from "./home/home.component";
 import { NotfoundComponent } from "./notfound/notfound.component";
 import { AboutComponent } from "./about/about.component";
+import { LoginComponent } from "./login/login.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotfoundComponent,
-    AboutComponent
+    AboutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +71,9 @@ import { AboutComponent } from "./about/about.component";
     MatDatepickerModule,
     MatMomentDateModule,
     NgbCarouselModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
