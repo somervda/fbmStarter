@@ -7,6 +7,17 @@
         <span>Home</span>
       </a>
 
+      <a mat-list-item [matMenuTriggerFor]="submenu">
+
+        <mat-icon>person_add</mat-icon>
+        <span >Decisions</span>
+        <mat-menu #submenu="matMenu"  >
+          <button mat-menu-item>Settings</button>
+          <button mat-menu-item>Help</button>
+        </mat-menu>
+
+      </a>
+
       <a mat-list-item routerLink="about">
         <mat-icon>question_answer</mat-icon>
         <span>About</span>
