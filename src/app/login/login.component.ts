@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID
       ],
+      // Turn off the creditiall helper - remove to enable
+      // credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       callbacks: {
         signInSuccessWithAuthResult: this.onLoginSuccessful.bind(this)
       }
@@ -40,6 +42,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onLoginSuccessful(result) {
     console.log("Firebase UI result:", result);
+
+    if (result.additionalUserInfo.isNewUser) {
+      console.log("Is new User");
+    }
 
     //this.ngZone.run(() => this.router.navigateByUrl('/courses'));
   }
