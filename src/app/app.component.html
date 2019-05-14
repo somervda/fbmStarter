@@ -6,6 +6,10 @@
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </a>
+      <a mat-list-item routerLink="about">
+        <mat-icon>question_answer</mat-icon>
+        <span>About</span>
+      </a>
 
       <!-- Example of a submenu
         <a mat-list-item [matMenuTriggerFor]="submenu">
@@ -19,20 +23,11 @@
 
       </a> -->
 
-      <a mat-list-item routerLink="about">
-        <mat-icon>question_answer</mat-icon>
-        <span>About</span>
-      </a>
-      <a mat-list-item>
-        <mat-icon>person_add</mat-icon>
-        <span>Register</span>
-      </a>
-
+      <!-- Logon/logoff functions -->
       <a mat-list-item routerLink="login" *ngIf="!(auth.loggedIn$ | async)">
         <mat-icon>account_circle</mat-icon>
         <span>Login</span>
       </a>
-
       <a
         mat-list-item
         routerLink="logout"

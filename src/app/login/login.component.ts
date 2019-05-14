@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID
       ],
-      // Turn off the creditiall helper - remove to enable
+      // Turn off the credential helper - remove to enable
       // credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       callbacks: {
         signInSuccessWithAuthResult: this.onLoginSuccessful.bind(this)
@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     };
 
     this.ui = new firebaseui.auth.AuthUI(this.afAuth.auth);
+    this.auth.persistSeason();
 
     this.ui.start("#firebaseui-auth-container", uiConfig);
   }
