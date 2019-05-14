@@ -3,6 +3,8 @@ import * as firebaseui from "firebaseui";
 import * as firebase from "firebase/app";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
+import { AuthService } from "../services/auth.service";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
   selector: "login",
@@ -15,7 +17,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private auth: AuthService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -42,11 +46,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onLoginSuccessful(result) {
     console.log("Firebase UI result:", result);
-
-    if (result.additionalUserInfo.isNewUser) {
-      console.log("Is new User");
-    }
-
-    //this.ngZone.run(() => this.router.navigateByUrl('/courses'));
+    this.auth.updateUserData(result.user);
+    this.snackBar.open("Logon successful for " + result.user.email, "", {
+      duration: 2000
+    });
+    this.ngZone.run(() => this.router.navigateByUrl("/"));
   }
 }
