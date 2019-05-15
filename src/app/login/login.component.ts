@@ -26,10 +26,28 @@ export class LoginComponent implements OnInit, OnDestroy {
     const uiConfig = {
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        firebase.auth.EmailAuthProvider.PROVIDER_ID
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        {
+          provider: 'microsoft.com',
+          providerName: 'Microsoft',
+          buttonColor: '#2F2F2F',
+          iconUrl: 'https://docs.microsoft.com/en-us/azure/active-directory/develop/media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png',
+          loginHintKey: 'login_hint'
+          // Request consent each time user logs into microsoft account
+          // ,
+          // customParameters: {
+          //   prompt: 'consent'`
+          // }   
+          ,
+          customParameters: {
+            // Forces account selection even when one account
+            // is available.
+            prompt: 'select_account'
+          } 
+        }
       ],
       // Turn off the credential helper - remove to enable
-      // credentialHelper: firebaseui.auth.CredentialHelper.NONE,
+      //credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       callbacks: {
         signInSuccessWithAuthResult: this.onLoginSuccessful.bind(this)
       }
