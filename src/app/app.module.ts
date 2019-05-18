@@ -7,30 +7,30 @@ import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { AngularFireStorageModule } from "@angular/fire/storage";
+// import { AngularFireStorageModule } from "@angular/fire/storage";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import {
-  MatDatepickerModule,
-  MatDialogModule,
-  MatInputModule,
+  // MatDatepickerModule,
+  // MatDialogModule,
+  // MatInputModule,
   MatListModule,
-  MatPaginatorModule,
-  MatProgressSpinnerModule,
-  MatSelectModule,
+  // MatPaginatorModule,
+  // MatProgressSpinnerModule,
+  // MatSelectModule,
   MatSidenavModule,
-  MatSortModule,
-  MatTableModule,
+  // MatSortModule,
+  // MatTableModule,
   MatToolbarModule,
   MatSnackBarModule
 } from "@angular/material";
-import { MatMenuModule } from "@angular/material/menu";
+// import { MatMenuModule } from "@angular/material/menu";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from "@angular/material/card";
-import { MatTabsModule } from "@angular/material/tabs";
-import { MatMomentDateModule } from "@angular/material-moment-adapter";
+// import { MatTabsModule } from "@angular/material/tabs";
+// import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 import { NgbCarouselModule } from "@ng-bootstrap/ng-bootstrap";
 import "hammerjs";
@@ -52,24 +52,24 @@ import { LoginComponent } from "./login/login.component";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatMenuModule,
+    // MatMenuModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatTabsModule,
+    // MatTabsModule,
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressSpinnerModule,
-    MatDialogModule,
+    // MatInputModule,
+    // MatTableModule,
+    // MatPaginatorModule,
+    // MatSortModule,
+    // MatProgressSpinnerModule,
+    // MatDialogModule,
     AppRoutingModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatMomentDateModule,
+    // MatSelectModule,
+    // MatDatepickerModule,
+    // MatMomentDateModule,
     NgbCarouselModule,
     MatSnackBarModule,
     AngularFireModule.initializeApp(environment.firebase),
