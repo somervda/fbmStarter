@@ -18,7 +18,6 @@ import {
 
 import { Observable, of } from "rxjs";
 import { switchMap, map } from "rxjs/operators";
-import * as firebase from "firebase";
 
 @Injectable({
   providedIn: "root"
@@ -82,8 +81,11 @@ export class AuthService {
     // being actioned. See documentation , future authentication will wait for this function
     // to complete and persistance will be set appropriately
 
+    // Note: Hard coded the firebase.auth.Auth.Persistence.SESSION property to save
+    // executable footprint by not needing to import
+    // the firebase library . Property value is "session"
     this.afAuth.auth
-      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .setPersistence("session")
       .then(function() {
         // Existing and future Auth states are now persisted in the current
         // session only. Closing the window would clear any existing state even
