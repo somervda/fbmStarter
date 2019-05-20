@@ -39,6 +39,7 @@ import { HomeComponent } from "./home/home.component";
 import { NotfoundComponent } from "./notfound/notfound.component";
 import { AboutComponent } from "./about/about.component";
 import { LoginComponent } from "./login/login.component";
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { LoginComponent } from "./login/login.component";
     MatSnackBarModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
