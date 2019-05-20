@@ -1,15 +1,44 @@
-import { Component } from '@angular/core';
-import { AuthService } from './services/auth.service';
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from "./services/auth.service";
+import { SwUpdate } from "@angular/service-worker";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
-export class AppComponent {
-  title = 'fbmStarter';
+export class AppComponent implements OnInit {
+  title = "fbmStarter";
 
-  constructor(public auth: AuthService) { }
+  constructor(
+    public auth: AuthService,
+    private swUpdate: SwUpdate,
+    private snackBar: MatSnackBar
+  ) {}
+
+  ngOnInit() {
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe(() => {
+        // Will show snackbar notification that PWA client is out of date
+        // and needs to be refreshed. Note: iOS at 12.2  not working,
+        // PWA apps do not recheck there cache on startup, it seems to be a bug
+        // that should be resolved (If you really need this then some sort of
+        // version check between firestore and application version probably is a solution)
+        let newVersionSnackBarRef = this.snackBar.open(
+          "New version available.",
+          "Load New Version?",
+          {
+            duration: 5000
+          }
+        );
+        newVersionSnackBarRef.onAction().subscribe(() => {
+          console.log("New version action pressed");
+          window.location.reload();
+        });
+      });
+    }
+  }
 
   logout() {
     this.auth.signOut();

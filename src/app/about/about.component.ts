@@ -10,15 +10,4 @@ export class AboutComponent implements OnInit {
   constructor(private snackBar: MatSnackBar) {}
 
   ngOnInit() {}
-
-  clickName() {
-    // Example using snackbar notifications (Instead of toast)
-    this.snackBar.open(
-      "Snackbar Example: Contact David to get help",
-      "Contact David",
-      {
-        duration: 2000
-      }
-    );
-  }
 }
