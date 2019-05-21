@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AuthService } from "./services/auth.service";
 import { SwUpdate } from "@angular/service-worker";
 import { MatSnackBar } from "@angular/material";
+import { ConnectionService } from "ng-connection-service";
 
 @Component({
   selector: "app-root",
@@ -10,14 +11,22 @@ import { MatSnackBar } from "@angular/material";
 })
 export class AppComponent implements OnInit {
   title = "fbmStarter";
+  isConnected = true;
 
   constructor(
     public auth: AuthService,
     private swUpdate: SwUpdate,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private connectionService: ConnectionService
   ) {}
 
   ngOnInit() {
+    // Track connection status
+    this.connectionService
+      .monitor()
+      .subscribe(isConnected => (this.isConnected = isConnected));
+
+    // Track PWA version
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
         // Will show snackbar notification that PWA client is out of date

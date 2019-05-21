@@ -44,7 +44,11 @@
     <button mat-icon-button (click)="sidenav.open('mouse')">
       <mat-icon>menu</mat-icon>
     </button>
+
     <div class="filler"></div>
+    <div *ngIf="!isConnected" class="offline-indicator">
+      Offline!&nbsp;
+    </div>
 
     <ng-container *ngIf="auth.user$ | async as user">
       <img
