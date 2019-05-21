@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
         // PWA apps do not recheck there cache on startup, it seems to be a bug
         // that should be resolved (If you really need this then some sort of
         // version check between firestore and application version probably is a solution)
+        // In iOS you can refresh the application in the browser to force the PWA to reload
         let newVersionSnackBarRef = this.snackBar.open(
           "New version available.",
           "Load New Version?",
