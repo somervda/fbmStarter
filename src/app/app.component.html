@@ -46,10 +46,16 @@
     </button>
 
     <div class="filler"></div>
-    <div *ngIf="!isConnected" class="offline-indicator">
-      Offline!&nbsp;
+    <div *ngIf="!isConnected">
+      <mat-chip-list>
+        <mat-chip
+          class="offline-indicator"
+          title="Application is offline and may have limited functionality."
+          >Offline!</mat-chip
+        >
+      </mat-chip-list>
     </div>
-
+    &nbsp;
     <ng-container *ngIf="auth.user$ | async as user">
       <img
         class="user-avatar"

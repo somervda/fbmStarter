@@ -3,7 +3,9 @@
         "Datepicker",
         "Firestore",
         "Paginator",
+        "Realtime",
         "Snackbar",
+        "Somerville",
         "appspot",
         "codelyzer",
         "devkit",
@@ -14,6 +16,7 @@
         "ngsw",
         "sidenav",
         "styleext",
+        "submenu",
         "testuser",
         "theming",
         "tslib"
