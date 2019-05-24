@@ -3,5 +3,15 @@ export interface User {
   email: string;
   photoURL?: string;
   displayName?: string;
-  myCustomData?: string;
+  // Date and time the user first logged into the application (used for aging)
+  dateCreated?: Date;
+
+  // Simple Authorization scheme 
+  isAdmin?: Boolean;
+  // Indicates the user has administration rights including ability to
+  // set a users roles
+  isActive? : Boolean;
+  // Indicates the user can use the application , by default
+  // a user is inactive until an administrator activates them
+
 }
