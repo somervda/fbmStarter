@@ -11,42 +11,38 @@
         <span>About</span>
       </a>
 
-      <!-- Example of a submenu
-        <a mat-list-item [matMenuTriggerFor]="submenu">
+      <!-- Logged in options -->
+      <span *ngIf="auth.loggedIn$ | async">
+        <!-- Administrator Functions -->
+        <a
+          mat-list-item
+          *ngIf="(auth.user$ | async)?.isAdmin"
+          mat-list-item
+          routerLink="administration"
+        >
+          <mat-icon>security</mat-icon>
+          <span>Administration</span>
+        </a>
+        <mat-divider></mat-divider>
+        <a
+          mat-list-item
+          routerLink="logout"
+          (click)="logout()"
+          *ngIf="auth.loggedIn$ | async"
+        >
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </a>
+      </span>
 
-        <mat-icon>person_add</mat-icon>
-        <span >Decisions</span>
-        <mat-menu #submenu="matMenu"  >
-          <button mat-menu-item>Settings</button>
-          <button mat-menu-item>Help</button>
-        </mat-menu>
-
-      </a> -->
-
-      <!-- Administrator Menu -->
-      <a
-        mat-list-item
-        *ngIf="(auth.loggedIn$ | async) && (auth.user$ | async)?.isAdmin"
-      >
-        <mat-icon>security</mat-icon>
-        <span>Administration</span>
-      </a>
-
-      <!-- Logon/logoff functions -->
-      <hr />
-      <a mat-list-item routerLink="login" *ngIf="!(auth.loggedIn$ | async)">
-        <mat-icon>account_circle</mat-icon>
-        <span>Login</span>
-      </a>
-      <a
-        mat-list-item
-        routerLink="logout"
-        (click)="logout()"
-        *ngIf="auth.loggedIn$ | async"
-      >
-        <mat-icon>exit_to_app</mat-icon>
-        <span>Logout</span>
-      </a>
+      <!-- Not logged in -->
+      <span *ngIf="!(auth.loggedIn$ | async)">
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="login">
+          <mat-icon>account_circle</mat-icon>
+          <span>Login</span>
+        </a>
+      </span>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -70,7 +66,7 @@
       <img
         class="user-avatar"
         [src]="user.photoURL"
-        [title]="user.displayName"
+        [matTooltip]="user.displayName"
       />
     </ng-container>
   </mat-toolbar>

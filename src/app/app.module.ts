@@ -25,6 +25,7 @@ import {
   MatToolbarModule,
   MatSnackBarModule
 } from "@angular/material";
+import { MatTooltipModule } from "@angular/material/tooltip";
 // import { MatMenuModule } from "@angular/material/menu";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
@@ -32,6 +33,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatChipsModule } from "@angular/material/chips";
 // import { MatTabsModule } from "@angular/material/tabs";
 // import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { MatDividerModule } from "@angular/material/divider";
 
 import { NgbCarouselModule } from "@ng-bootstrap/ng-bootstrap";
 import "hammerjs";
@@ -41,6 +43,8 @@ import { NotfoundComponent } from "./notfound/notfound.component";
 import { AboutComponent } from "./about/about.component";
 import { LoginComponent } from "./login/login.component";
 import { ServiceWorkerModule } from "@angular/service-worker";
+import { AdministrationComponent } from "./administration/administration.component";
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +52,9 @@ import { ServiceWorkerModule } from "@angular/service-worker";
     HomeComponent,
     NotfoundComponent,
     AboutComponent,
-    LoginComponent
+    LoginComponent,
+    AdministrationComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -58,11 +64,13 @@ import { ServiceWorkerModule } from "@angular/service-worker";
     MatButtonModule,
     MatIconModule,
     MatCardModule,
+    MatDividerModule,
     // MatTabsModule,
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
     MatChipsModule,
+    MatTooltipModule,
     // MatInputModule,
     // MatTableModule,
     // MatPaginatorModule,
