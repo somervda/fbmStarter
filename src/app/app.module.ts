@@ -45,6 +45,7 @@ import { LoginComponent } from "./login/login.component";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { AdministrationComponent } from "./administration/administration.component";
 import { UsersComponent } from './users/users.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { UsersComponent } from './users/users.component';
     AboutComponent,
     LoginComponent,
     AdministrationComponent,
-    UsersComponent
+    UsersComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

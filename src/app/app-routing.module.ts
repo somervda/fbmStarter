@@ -6,6 +6,7 @@ import { AboutComponent } from "./about/about.component";
 import { LoginComponent } from "./login/login.component";
 import { AdministrationComponent } from "./administration/administration.component";
 import { UsersComponent } from "./users/users.component";
+import { UserComponent } from "./user/user.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "administration", component: AdministrationComponent },
   { path: "users", component: UsersComponent },
+  { path: "user/:uid", component: UserComponent },
   { path: "**", component: NotfoundComponent }
 ];
 
