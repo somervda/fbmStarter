@@ -1,9 +1,9 @@
 .about-card {
-  flex-basis: 400px;
+  flex-basis: 500px;
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 100px;
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .card-header {
@@ -12,9 +12,16 @@
 
 .appLogoImg {
   width: 100%;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
 }
 
 .designerName {
   color: blue;
+}
+
+.card-container {
+  margin-left: 10px;
+  margin-right: 10px;
 }
