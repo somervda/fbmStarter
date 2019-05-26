@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "administration", component: AdministrationComponent },
   { path: "users", component: UsersComponent },
-  { path: "user/:uid", component: UserComponent },
+  // { path: "user/:uid", component: UserComponent, resolve: {UserResolver} },
   { path: "**", component: NotfoundComponent }
 ];
 
