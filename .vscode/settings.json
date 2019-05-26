@@ -20,7 +20,8 @@
         "submenu",
         "testuser",
         "theming",
-        "tslib"
+        "tslib",
+        "userservice"
     ],
     "cSpell.ignoreWords": [
         "actioned"

@@ -7,6 +7,7 @@ import { LoginComponent } from "./login/login.component";
 import { AdministrationComponent } from "./administration/administration.component";
 import { UsersComponent } from "./users/users.component";
 import { UserComponent } from "./user/user.component";
+import { UserResolver } from "./services/user-resolver";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -14,7 +15,11 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "administration", component: AdministrationComponent },
   { path: "users", component: UsersComponent },
-  // { path: "user/:uid", component: UserComponent, resolve: {UserResolver} },
+  {
+    path: "user/:uid",
+    component: UserComponent,
+    resolve: { user: UserResolver }
+  },
   { path: "**", component: NotfoundComponent }
 ];
 
