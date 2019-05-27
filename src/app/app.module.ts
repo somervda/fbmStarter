@@ -23,7 +23,8 @@ import {
   // MatSortModule,
   // MatTableModule,
   MatToolbarModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatGridListModule
 } from "@angular/material";
 import { MatTooltipModule } from "@angular/material/tooltip";
 // import { MatMenuModule } from "@angular/material/menu";
@@ -44,8 +45,9 @@ import { AboutComponent } from "./about/about.component";
 import { LoginComponent } from "./login/login.component";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { AdministrationComponent } from "./administration/administration.component";
-import { UsersComponent } from './users/users.component';
-import { UserComponent } from './user/user.component';
+import { UsersComponent } from "./users/users.component";
+import { UserComponent } from "./user/user.component";
+import { GridDisplayComponent } from './shared/grid-display/grid-display.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { UserComponent } from './user/user.component';
     LoginComponent,
     AdministrationComponent,
     UsersComponent,
-    UserComponent
+    UserComponent,
+    GridDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +86,7 @@ import { UserComponent } from './user/user.component';
     // MatSelectModule,
     // MatDatepickerModule,
     // MatMomentDateModule,
+    MatGridListModule,
     NgbCarouselModule,
     MatSnackBarModule,
     AngularFireModule.initializeApp(environment.firebase),
