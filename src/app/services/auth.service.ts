@@ -70,7 +70,7 @@ export class AuthService {
 
   async signOut() {
     await this.afAuth.auth.signOut();
-    console.log("User Signed Out");
+    // console.log("User Signed Out");
     this.router.navigate(["/"]);
   }
 
@@ -89,7 +89,7 @@ export class AuthService {
         // Existing and future Auth states are now persisted in the current
         // session only. Closing the window would clear any existing state even
         // if a user forgets to sign out.
-        console.log("persistSeason worked");
+        // console.log("persistSeason worked");
       })
       .catch(function(error) {
         // Handle Errors here.

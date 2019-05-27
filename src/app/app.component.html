@@ -14,7 +14,10 @@
       <!-- Logged in options -->
       <span *ngIf="auth.loggedIn$ | async">
         <!-- User functions , if we have too many then add a navigation page  -->
-        <a mat-list-item [routerLink]="['user/', (auth.user$ | async)?.uid]">
+        <a
+          mat-list-item
+          [routerLink]="['user/', (auth.user$ | async)?.uid || '']"
+        >
           <mat-icon>person</mat-icon>
           <span>My Profile</span>
         </a>

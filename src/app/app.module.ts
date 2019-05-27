@@ -12,29 +12,27 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import {
+  MatListModule,
+  MatCheckboxModule,
+  MatSidenavModule,
+  MatTableModule,
+  MatToolbarModule,
+  MatSnackBarModule,
+  MatTooltipModule,
+  MatButtonModule,
+  MatIconModule,
+  MatCardModule,
+  MatChipsModule,
+  MatDividerModule
   // MatDatepickerModule,
   // MatDialogModule,
   // MatInputModule,
-  MatListModule,
   // MatPaginatorModule,
   // MatProgressSpinnerModule,
   // MatSelectModule,
-  MatSidenavModule,
   // MatSortModule,
-  // MatTableModule,
-  MatToolbarModule,
-  MatSnackBarModule,
-  MatGridListModule
+  // MatGridListModule
 } from "@angular/material";
-import { MatTooltipModule } from "@angular/material/tooltip";
-// import { MatMenuModule } from "@angular/material/menu";
-import { MatButtonModule } from "@angular/material/button";
-import { MatIconModule } from "@angular/material/icon";
-import { MatCardModule } from "@angular/material/card";
-import { MatChipsModule } from "@angular/material/chips";
-// import { MatTabsModule } from "@angular/material/tabs";
-// import { MatMomentDateModule } from "@angular/material-moment-adapter";
-import { MatDividerModule } from "@angular/material/divider";
 
 import { NgbCarouselModule } from "@ng-bootstrap/ng-bootstrap";
 import "hammerjs";
@@ -63,30 +61,32 @@ import { UserComponent } from "./user/user.component";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    // MatMenuModule,
+    MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatDividerModule,
-    // MatTabsModule,
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
     MatChipsModule,
     MatTooltipModule,
+    MatTableModule,
+    MatSnackBarModule,
+    MatDividerModule,
+    // MatMenuModule,
+    // MatDividerModule,
+    // MatTabsModule,
     // MatInputModule,
     // MatTableModule,
     // MatPaginatorModule,
     // MatSortModule,
     // MatProgressSpinnerModule,
     // MatDialogModule,
-    AppRoutingModule,
     // MatSelectModule,
     // MatDatepickerModule,
     // MatMomentDateModule,
-    MatGridListModule,
+    AppRoutingModule,
     NgbCarouselModule,
-    MatSnackBarModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     // Allow offline operations - useful when used in combination with PWA functionality

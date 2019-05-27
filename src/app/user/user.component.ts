@@ -29,9 +29,5 @@ export class UserComponent implements OnInit {
         value: this.user.photoURL
       }
     ];
-
-    console.log("user kvps:", this.kvps);
-
-    console.log("user user:", this.user);
   }
 }
