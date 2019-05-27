@@ -1,4 +1,18 @@
 <div class="page-container">
   <h1>User Profile</h1>
-  <grid-display [tilePairs]="kvps"></grid-display>
+  <!-- <grid-display [tilePairs]="kvps"></grid-display> -->
+  <table>
+    <tr *ngFor="let kvp of kvps">
+      <td>
+        <b>{{ kvp.key }}</b>
+      </td>
+      <td>{{ kvp.value }}</td>
+    </tr>
+    <tr>
+      <td>
+        <b>Photo</b>
+      </td>
+      <td><img src="{{ user.photoURL }}" height="48px" /></td>
+    </tr>
+  </table>
 </div>

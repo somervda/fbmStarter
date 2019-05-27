@@ -47,7 +47,6 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { AdministrationComponent } from "./administration/administration.component";
 import { UsersComponent } from "./users/users.component";
 import { UserComponent } from "./user/user.component";
-import { GridDisplayComponent } from './shared/grid-display/grid-display.component';
 
 @NgModule({
   declarations: [
@@ -58,8 +57,7 @@ import { GridDisplayComponent } from './shared/grid-display/grid-display.compone
     LoginComponent,
     AdministrationComponent,
     UsersComponent,
-    UserComponent,
-    GridDisplayComponent
+    UserComponent
   ],
   imports: [
     BrowserModule,
