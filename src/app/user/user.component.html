@@ -1,6 +1,6 @@
 <div class="page-container">
   <h1>User Profile</h1>
-  <!-- Use an array of keyValuePairs to display most of the uer properties -->
+  <!-- Use an array of keyValuePairs to display most of the user properties -->
   <table>
     <tr *ngFor="let kvp of kvps">
       <td>
@@ -13,6 +13,23 @@
         <b>Photo</b>
       </td>
       <td><img src="{{ user.photoURL }}" height="48px" /></td>
+    </tr>
+
+    <tr *ngIf="updatableProfile">
+      <td>
+        <b>Is&nbsp;Administrator?</b>
+      </td>
+      <td>
+        <mat-checkbox [checked]="user.isAdmin"></mat-checkbox>
+      </td>
+    </tr>
+    <tr *ngIf="updatableProfile">
+      <td>
+        <b>Is&nbsp;Activated?</b>
+      </td>
+      <td>
+        <mat-checkbox [checked]="user.isActivated"></mat-checkbox>
+      </td>
     </tr>
   </table>
 </div>
