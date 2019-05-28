@@ -1,6 +1,7 @@
+import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
 import { AngularFireModule } from "@angular/fire";
 
@@ -60,6 +61,7 @@ import { UserComponent } from "./user/user.component";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     AppRoutingModule,
     MatCheckboxModule,
     MatButtonModule,

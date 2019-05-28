@@ -14,22 +14,29 @@
       </td>
       <td><img src="{{ user.photoURL }}" height="48px" /></td>
     </tr>
-
-    <tr *ngIf="updatableProfile">
-      <td>
-        <b>Is&nbsp;Administrator?</b>
-      </td>
-      <td>
-        <mat-checkbox [checked]="user.isAdmin"></mat-checkbox>
-      </td>
-    </tr>
-    <tr *ngIf="updatableProfile">
-      <td>
-        <b>Is&nbsp;Activated?</b>
-      </td>
-      <td>
-        <mat-checkbox [checked]="user.isActivated"></mat-checkbox>
-      </td>
-    </tr>
+    <ng-container *ngIf="updatableProfile">
+      <tr>
+        <td>
+          <b>Is&nbsp;Administrator?</b>
+        </td>
+        <td>
+          <mat-checkbox
+            [(ngModel)]="user.isAdmin"
+            (click)="updateIsAdmin()"
+          ></mat-checkbox>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Is&nbsp;Activated?</b>
+        </td>
+        <td>
+          <mat-checkbox
+            [(ngModel)]="user.isActivated"
+            (click)="updateIsActivated()"
+          ></mat-checkbox>
+        </td>
+      </tr>
+    </ng-container>
   </table>
 </div>

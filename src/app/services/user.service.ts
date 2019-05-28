@@ -1,3 +1,4 @@
+import { AuditLogService } from "./audit-log.service";
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
@@ -9,7 +10,7 @@ import { first, map } from "rxjs/operators";
   providedIn: "root"
 })
 export class UserService {
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore, private als: AuditLogService) {}
 
   findUserByUid(uid: string): Observable<User> {
     return this.afs
@@ -22,5 +23,23 @@ export class UserService {
         }),
         first()
       );
+  }
+
+  dbFieldUpdate(docId: string, fieldName: string, newValue: any) {
+    if (docId && fieldName) {
+      const updateObject = {};
+      // console.log("dbFieldUpdate", docId, fieldName, newValue);
+      updateObject[fieldName] = newValue;
+      this.afs
+        .doc("/users/" + docId) // Update to firestore collection
+        .update(updateObject)
+        .then(data => {
+          // console.log(fieldName + " updated");
+          this.als.logDataChange(docId, "users", fieldName, newValue);
+        })
+        .catch(error =>
+          console.error(fieldName + " user update error ", error)
+        );
+    }
   }
 }
