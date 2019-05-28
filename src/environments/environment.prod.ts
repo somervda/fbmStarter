@@ -1,6 +1,5 @@
 export const environment = {
   production: true,
-  auditLog: true,
   firebase: {
     apiKey: "AIzaSyA_A9y_kFKKa6SS6M1Bdo1q1L-ciGXT0rA",
     authDomain: "fbmstarter.firebaseapp.com",

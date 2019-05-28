@@ -1,4 +1,3 @@
-import { AuditLogService } from "./audit-log.service";
 //import { AuthService } from "./auth.service";
 import { auth } from "firebase/app";
 // see https://fireship.io/lessons/angularfire-google-oauth/ for
@@ -30,8 +29,7 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
-    private router: Router,
-    private auditLog: AuditLogService
+    private router: Router
   ) {
     // Get the auth state, then fetch the Firestore user document or return null
     this.user$ = this.afAuth.authState.pipe(
@@ -66,12 +64,10 @@ export class AuthService {
     if (!data.photoURL) {
       data.photoURL = "https://ui-avatars.com/api/?name=" + data.displayName;
     }
-    this.auditLog.logAuthentication(true);
     return userRef.set(data, { merge: true });
   }
 
   async signOut() {
-    this.auditLog.logAuthentication(false);
     await this.afAuth.auth.signOut();
     this.router.navigate(["/"]);
   }

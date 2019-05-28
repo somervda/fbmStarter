@@ -1,4 +1,3 @@
-import { AuditLogService } from "./audit-log.service";
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
@@ -10,7 +9,7 @@ import { first, map } from "rxjs/operators";
   providedIn: "root"
 })
 export class UserService {
-  constructor(private afs: AngularFirestore, private als: AuditLogService) {}
+  constructor(private afs: AngularFirestore) {}
 
   findUserByUid(uid: string): Observable<User> {
     return this.afs
@@ -35,7 +34,6 @@ export class UserService {
         .update(updateObject)
         .then(data => {
           // console.log(fieldName + " updated");
-          this.als.logDataChange(docId, "users", fieldName, newValue);
         })
         .catch(error =>
           console.error(fieldName + " user update error ", error)
