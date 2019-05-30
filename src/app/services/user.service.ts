@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { User } from "../models/user.model";
 import { convertSnaps } from "./db-utils";
 import { first, map } from "rxjs/operators";
+import OrderByDirection = firebase.firestore.OrderByDirection;
 
 @Injectable({
   providedIn: "root"
@@ -23,6 +24,23 @@ export class UserService {
         first()
       );
   }
+
+  findUsers(
+    filter = '', sortOrder: OrderByDirection = 'asc',
+    pageNumber = 0, pageSize = 3):  Observable<User[]> {
+
+      return this.afs
+      .collection("users", ref =>  ref.orderBy('uid', sortOrder)
+      .limit(pageSize)
+      .startAfter(pageNumber * pageSize))
+      .snapshotChanges()
+      .pipe(
+        map(snaps => {
+          return convertSnaps<User>(snaps);
+        })
+      )
+}
+
 
   dbFieldUpdate(docId: string, fieldName: string, newValue: any) {
     if (docId && fieldName) {
