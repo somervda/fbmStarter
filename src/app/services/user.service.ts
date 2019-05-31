@@ -26,19 +26,39 @@ export class UserService {
   }
 
   findUsers(
-    filter = '', sortOrder: OrderByDirection = 'asc',
-    pageNumber = 0, pageSize = 3):  Observable<User[]> {
-
-      return this.afs
-      .collection("users", ref =>  ref.orderBy('uid', sortOrder)
-      .limit(pageSize)
-      .startAfter(pageNumber * pageSize))
-      .snapshotChanges()
-      .pipe(
-        map(snaps => {
-          return convertSnaps<User>(snaps);
-        })
-      )
+    filter = '', sortOrder: OrderByDirection ,
+    pageSize, startAfterEmail ):  Observable<User[]> {
+      
+      if (startAfterEmail=="")
+      {
+        console.log( "findUsers-no start after", sortOrder ,pageSize  );
+        return this.afs
+        .collection("users", ref =>  ref
+          .orderBy('email', sortOrder)
+          .limit(pageSize)
+        )
+        .snapshotChanges()
+        .pipe(
+          map(snaps => {
+            return convertSnaps<User>(snaps);
+            })
+          )
+        }
+        else {
+          console.log( "findUsers- start after", sortOrder ,pageSize,startAfterEmail  );
+          return this.afs
+          .collection("users", ref =>  ref
+            .orderBy('email', sortOrder)
+            .limit(pageSize)
+            .startAfter(startAfterEmail)
+          )
+          .snapshotChanges()
+          .pipe(
+            map(snaps => {
+              return convertSnaps<User>(snaps);
+              })
+            )
+        }
 }
 
 

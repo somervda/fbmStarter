@@ -1,7 +1,7 @@
 import { UserService } from './../services/user.service';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { UsersDataSource } from '../services/users.datasource';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator, MatSort, MatTable, MatRow } from '@angular/material';
 import { merge } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -13,7 +13,8 @@ import { tap } from 'rxjs/operators';
 export class UsersComponent implements OnInit , AfterViewInit {
   
   dataSource: UsersDataSource;
-  displayedColumns= ["displayName", "isActivated"];
+  displayedColumns= ["email","displayName", "isActivated","dateCreated"];
+  lastEmail = "";
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -23,11 +24,15 @@ export class UsersComponent implements OnInit , AfterViewInit {
   ngOnInit() {
     this.dataSource = new UsersDataSource(this.userService);
     
-    this.dataSource.loadUsers( '', 'asc', 0, 3);
+    this.dataSource.loadUsers( '', 'asc', 3, this.lastEmail);
   }
   
   ngAfterViewInit(): void {
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+    this.sort.sortChange.subscribe(() => {
+      // Change in sort direction reset lastEmail
+       this.paginator.pageIndex = 0;
+       this.lastEmail="";
+    });
 
     // fromEvent(this.input.nativeElement,'keyup')
     //     .pipe(
@@ -42,7 +47,11 @@ export class UsersComponent implements OnInit , AfterViewInit {
 
     merge(this.sort.sortChange, this.paginator.page)
     .pipe(
-        tap(() => this.loadUsersPage())
+        tap(() => {
+          this.lastEmail=this.dataSource.usersSubject.value[this.dataSource.usersSubject.value.length -1].email;
+          console.log("tap:",this.lastEmail);
+          this.loadUsersPage();
+        })
     )
     .subscribe();
   }
@@ -50,9 +59,9 @@ export class UsersComponent implements OnInit , AfterViewInit {
   loadUsersPage() {
     this.dataSource.loadUsers(
         "",
-        "asc",
-        this.paginator.pageIndex,
-        this.paginator.pageSize);
+        this.sort.direction==""? "asc" : this.sort.direction ,
+        this.paginator.pageSize,
+        this.lastEmail);
 }
 
 }
