@@ -9,20 +9,21 @@ import OrderByDirection = firebase.firestore.OrderByDirection;
 
 
 export class UsersDataSource implements DataSource<User> {
-    public usersSubject = new BehaviorSubject<User[]>([]);
+    private usersSubject = new BehaviorSubject<User[]>([]);
     private loadingSubject = new BehaviorSubject<boolean>(false);
     public loading$ = this.loadingSubject.asObservable();
     constructor(private userService: UserService) {
     }
 
     loadUsers(filter:string,
+                sortField: string,
                 sortOrder: OrderByDirection,
-                pageSize:number,startAfterEmail : string) {
+                pageSize:number) {
 
         this.loadingSubject.next(true);
 
-        this.userService.findUsers(filter, sortOrder,
-             pageSize,startAfterEmail).pipe(
+        this.userService.findUsers(filter, sortField,sortOrder,
+             pageSize).pipe(
                 catchError(() => of([])),
                 finalize(() => this.loadingSubject.next(false))
             )

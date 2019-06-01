@@ -16,7 +16,6 @@ export class UsersComponent implements OnInit , AfterViewInit {
   displayedColumns= ["email","displayName", "isActivated","dateCreated"];
   lastEmail = "";
   
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   
   constructor(private userService : UserService) { }
@@ -24,32 +23,14 @@ export class UsersComponent implements OnInit , AfterViewInit {
   ngOnInit() {
     this.dataSource = new UsersDataSource(this.userService);
     
-    this.dataSource.loadUsers( '', 'asc', 3, this.lastEmail);
+    this.dataSource.loadUsers( '',"eMail", 'asc', 100);
   }
   
   ngAfterViewInit(): void {
-    this.sort.sortChange.subscribe(() => {
-      // Change in sort direction reset lastEmail
-       this.paginator.pageIndex = 0;
-       this.lastEmail="";
-    });
-
-    // fromEvent(this.input.nativeElement,'keyup')
-    //     .pipe(
-    //         debounceTime(150),
-    //         distinctUntilChanged(),
-    //         tap(() => {
-    //             this.paginator.pageIndex = 0;
-    //             this.loadLessonsPage();
-    //         })
-    //     )
-    //     .subscribe();
-
-    merge(this.sort.sortChange, this.paginator.page)
+    this.sort.sortChange
     .pipe(
         tap(() => {
-          this.lastEmail=this.dataSource.usersSubject.value[this.dataSource.usersSubject.value.length -1].email;
-          console.log("tap:",this.lastEmail);
+          console.log("sort",this.sort);
           this.loadUsersPage();
         })
     )
@@ -59,9 +40,9 @@ export class UsersComponent implements OnInit , AfterViewInit {
   loadUsersPage() {
     this.dataSource.loadUsers(
         "",
+        this.sort.active,
         this.sort.direction==""? "asc" : this.sort.direction ,
-        this.paginator.pageSize,
-        this.lastEmail);
-}
+        100);
+  }
 
 }
