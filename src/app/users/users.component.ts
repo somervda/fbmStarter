@@ -13,8 +13,8 @@ import { tap } from 'rxjs/operators';
 export class UsersComponent implements OnInit , AfterViewInit {
   
   dataSource: UsersDataSource;
-  displayedColumns= ["email","displayName", "isActivated","dateCreated"];
-  lastEmail = "";
+  displayedColumns= ["email","displayName","isAdmin", "isActivated","dateCreated"];
+
   
   @ViewChild(MatSort) sort: MatSort;
   
@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit , AfterViewInit {
   ngOnInit() {
     this.dataSource = new UsersDataSource(this.userService);
     
-    this.dataSource.loadUsers( '',"eMail", 'asc', 100);
+    this.dataSource.loadUsers( '',"email", 'asc', 100);
   }
   
   ngAfterViewInit(): void {

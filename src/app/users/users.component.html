@@ -5,32 +5,38 @@
     <mat-spinner></mat-spinner>
   </div>
 
-  <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource"
+  <mat-table class="lessons-table mat-elevation-z8 tableSizeMaximizer" [dataSource]="dataSource"
    matSort matSortActive="email" matSortDirection="asc" matSortDisableClear>
 
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>eMail</mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
+    <ng-container matColumnDef="email" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header >eMail</mat-header-cell>
+      <mat-cell *matCellDef="let user" ><a routerLink="/user/{{user.uid}}">{{user.email}}</a></mat-cell>
     </ng-container>
     
-    <ng-container matColumnDef="displayName">
-      <mat-header-cell *matHeaderCellDef >Name</mat-header-cell>
+    <ng-container matColumnDef="displayName" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.displayName}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="isActivated">
-      <mat-header-cell *matHeaderCellDef>Activated?</mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.isActivated}}</mat-cell>
+    <ng-container matColumnDef="isActivated" >
+      <mat-header-cell *matHeaderCellDef >Activated?</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.isActivated  ? "Yes" : "No"}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isAdmin">
+      <mat-header-cell *matHeaderCellDef >Admin?</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.isAdmin  ? "Yes" : "No"}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="dateCreated">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Created</mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.dateCreated?user.dateCreated.toDate():"" | date:'medium'  }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header >Created</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.dateCreated ? (user.dateCreated.toDate() | date:'mediumDate') : ""   }}</mat-cell>
     </ng-container>
     
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
+
 
 
 
