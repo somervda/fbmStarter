@@ -47,23 +47,29 @@ export class AuthService {
     this.loggedIn$ = this.afAuth.authState.pipe(map(user => !!user));
   }
 
-  public updateUserData(user) {
+  public updateUserData(result) {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
-      `users/${user.uid}`
+      `users/${result.user.uid}`
     );
 
     const data = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL
+      uid: result.user.uid,
+      email: result.user.email,
+      displayName: result.user.displayName,
+      photoURL: result.user.photoURL
     };
 
     // Create a generic photoURL if auth. photoURL is null
     if (!data.photoURL) {
       data.photoURL = "https://ui-avatars.com/api/?name=" + data.displayName;
     }
+
+    // Add a creation dae to user doc if it is a new user
+    if (result.additionalUserInfo.isNewUser) {
+      data["dateCreated"] = new Date();
+    }
+
     return userRef.set(data, { merge: true });
   }
 
@@ -94,4 +100,6 @@ export class AuthService {
         console.log("persistSeason error ", error);
       });
   }
+
+  setDateCreated() {}
 }
