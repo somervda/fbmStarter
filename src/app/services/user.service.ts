@@ -30,7 +30,7 @@ export class UserService {
     pageSize):  Observable<User[]> {
       
 
-    console.log( "findUsers",  sortField, sortOrder  ,pageSize  );
+    // console.log( "findUsers",  sortField, sortOrder  ,pageSize  );
     return this.afs
     .collection("users", ref =>  ref
       .orderBy(sortField, sortOrder)

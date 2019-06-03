@@ -64,13 +64,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onLoginSuccessful(result) {
-    console.log("Firebase UI result:", result);
+    // console.log("Firebase UI result:", result);
     this.auth.updateUserData(result);
     this.snackBar.open("Logon successful for " + result.user.email, "", {
       duration: 2000
     });
-    // if (result.additionalUserInfo.isNewUser)
-    //   this.auth.setDateCreated();
+
     this.ngZone.run(() => this.router.navigateByUrl("/"));
   }
 }

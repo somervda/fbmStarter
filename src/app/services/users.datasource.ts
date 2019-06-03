@@ -34,7 +34,7 @@ export class UsersDataSource implements DataSource<User> {
     }
 
     connect(collectionViewer: CollectionViewer): Observable<User[]> {
-        console.log("Connecting data source");
+        // console.log("Connecting data source");
         return this.usersSubject.asObservable();
     }
 
