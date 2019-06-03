@@ -11,8 +11,8 @@
         <span>About</span>
       </a>
 
-      <!-- Logged in options -->
-      <span *ngIf="auth.loggedIn$ | async">
+      <!-- Logged in and activated options -->
+      <span *ngIf="(auth.loggedIn$ | async) && (auth.user$ | async)?.isActivated">
         <!-- User functions , if we have too many then add a navigation page  -->
         <a
           mat-list-item
@@ -32,6 +32,9 @@
           <mat-icon>security</mat-icon>
           <span>Administration</span>
         </a>
+      </span>
+      <!-- Logged in options -->
+      <span *ngIf="(auth.loggedIn$ | async) ">
         <mat-divider></mat-divider>
         <a
           mat-list-item
@@ -73,10 +76,17 @@
     &nbsp;
     <ng-container *ngIf="auth.user$ | async as user">
       <img
+        *ngIf="user.isActivated"
         class="user-avatar"
         [src]="user.photoURL"
         [matTooltip]="user.displayName"
       />
+      <img
+      *ngIf="!user.isActivated"
+      class="user-avatar"
+      src="../../assets/images/Block_user_pic.png"
+      matTooltip="You are not activated, contact an administrator to have your account activated to use this system."
+    />
     </ng-container>
   </mat-toolbar>
   <router-outlet></router-outlet>
