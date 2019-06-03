@@ -65,11 +65,6 @@ export class AuthService {
       data.photoURL = "https://ui-avatars.com/api/?name=" + data.displayName;
     }
 
-    // Add a creation dae to user doc if it is a new user
-    if (result.additionalUserInfo.isNewUser) {
-      data["dateCreated"] = new Date();
-    }
-
     return userRef.set(data, { merge: true });
   }
 
