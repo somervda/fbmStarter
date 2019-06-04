@@ -5,6 +5,9 @@ This project aims to provide a starting point for angular applications. Intent i
 **fbmStarter Capabilities**
 * Angular 7+ (Version updated as new major releases of Angular occurs)
 * Firebase - fbmStarter includes firestore, authentication,  hosting, firestore rules and firebase functions
+* Material Design - implements material design interface using @angular/material library
+* Authentication - Set up to use firebase authentication and firebaseui library to provide the authentication UI elements. Authentication is enterprise oriented, examples are provided of using google, email and microsoft as authentication providers. The microsoft provider should allow enterprises to use office365 accounts (as long as account access is allowed.) Some basic authorization capabilities are included (administrator role and functions)
+* Home splash page with carousel - Example of a home page as a launching point for new users. Uses bootstrap carousel component and material cards in a fairly typical home page layout (main features as images and detail cards)
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
