@@ -19,13 +19,14 @@ service cloud.firestore {
 
     // ****** Document Access functionsnp
 
-    // user document rules
+    // user document rules (Delete not allowed)
 
     // 1  Own user document:  read/write (except for updates to  isAdmin and isActivated properties)
+    //                        special case is create   
         match /users/{user} {
-          allow read:  if isAuthenticated() &&
+          allow read , create:  if isAuthenticated() &&
                              user==request.auth.uid ;
-          allow write: if isAuthenticated() &&
+          allow update: if isAuthenticated() &&
                           user==request.auth.uid &&
                           request.resource.data.isAdmin == resource.data.isAdmin &&
                           request.resource.data.isActivated == resource.data.isActivated;
