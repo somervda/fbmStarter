@@ -2,7 +2,9 @@
 
 This project aims to provide a starting point for angular applications. Intent is for designer of a new application to take a copy of this project, perform a set of standard replace operations to rename the project to the required new name and then start adding application specific code. The fbmStarter application provides the following capabilities that can be extended by the application designer.
 
-fbmStarter Capabilities
+**fbmStarter Capabilities**
+* Angular 7+ (Version updated as new major releases of Angular occurs)
+* Firebase - fbmStarter includes firestore, authentication,  hosting, firestore rules and firebase functions
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
