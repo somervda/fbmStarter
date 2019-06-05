@@ -14,6 +14,13 @@ This project aims to provide a starting point for angular applications. Intent i
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
+**Creating a new new project based on fmmStarter
+
+A new project can be created based on the fbmStarter code. To do this will require a new firebase instance.
+1. Create a new folder for the new project. Name the folder after the new project name
+2. Get a zip copy of the fbmStarter code from github https://github.com/somervda/fbmStarter/archive/master.zip
+3. Open the zip file and copy the content of the top level fbmStarter directory to the new project directory created in step 1.
+
 
 ## Further help
 
