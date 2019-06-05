@@ -22,7 +22,7 @@ A new project can be created based on the fbmStarter code. To do this will requi
 3. Open the zip file and copy the content of the top level fbmStarter-master folder in the zip to the new project folder.
 4. Using VSCode open the new project folder.
 5. When initially opened a git repository will not be set up. In VSCode click on the "Source Control" icon on the left side. This will open with a message that "No source control providers are registered". Click on the "Initialize Repository" icon to create a new git repository (Normally select the first/default option for the location of this repository). 
-6. Perform a File->Replace in Files in VSCode. Replace "fbmStarter" to "<New Project Name>" and "fbm-starter" to "<New Project Name without capitals format>" e.g. in the case of creating a new project called ourDars , fbmStarter->ourDars , fbm-starter->our-dars .
+6. Perform a File->Replace in Files in VSCode. Replace "fbmStarter" to "[New Project Name]" and "fbm-starter" to "[New Project Name without capitals format]" e.g. in the case of creating a new project called ourDars , fbmStarter->ourDars , fbm-starter->our-dars .
 
 
 
