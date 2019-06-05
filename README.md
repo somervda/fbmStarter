@@ -14,7 +14,7 @@ This project aims to provide a starting point for angular applications. Intent i
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
-**Creating a new new project based on fmmStarter**
+**Creating a new new project based on fbmStarter**
 
 A new project can be created based on the fbmStarter code. To do this will require a new firebase instance.
 1. Create a new folder for the new project. Name the folder after the new project name. This folder is the "New Project folder"
@@ -27,9 +27,10 @@ A new project can be created based on the fbmStarter code. To do this will requi
 8. Perform a "ng build --prod" to check no errors exist
 
 **Application specific changes**
+
 The previous instructions will set up aa direct copy of the fbmStarter code with your new project name, apllication specific changes will still be needed before adding your own code.
 1. Use your own firebase project information(Please don't use the fbmStarter defaults, I will be periodically refreshing this firebase project to make sure it stays fresh. ). The firebase config information is stored in the environment folder files.
-2. Change the PWA graphic set in 
+2. Change the PWA graphic set in src/assets/icons folder. These need to be sized to match the file name definitions i.e. "icon-48x48.png". Use https://app-manifest.firebaseapp.com/ to make this easier.
 
 
 
