@@ -23,6 +23,13 @@ A new project can be created based on the fbmStarter code. To do this will requi
 4. Using VSCode open the new project folder.
 5. When initially opened a git repository will not be set up. In VSCode click on the "Source Control" icon on the left side. This will open with a message that "No source control providers are registered". Click on the "Initialize Repository" icon to create a new git repository (Normally select the first/default option for the location of this repository). 
 6. Perform a File->Replace in Files in VSCode. Replace "fbmStarter" to "[New Project Name]" and "fbm-starter" to "[New Project Name without capitals format]" e.g. in the case of creating a new project called ourDars , fbmStarter->ourDars , fbm-starter->our-dars .
+7. In the VSCode terminal type "npm i" to install the node libraries defined in package.json (may take a while)
+8. Perform a "ng build --prod" to check no errors exist
+
+**Application specific changes**
+The previous instructions will set up aa direct copy of the fbmStarter code with your new project name, apllication specific changes will still be needed before adding your own code.
+1. Use your own firebase project information(Please don't use the fbmStarter defaults, I will be periodically refreshing this firebase project to make sure it stays fresh. ). The firebase config information is stored in the environment folder files.
+2. Change the PWA graphic set in 
 
 
 
