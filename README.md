@@ -19,12 +19,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 A new project can be created based on the fbmStarter code. To do this will require a new firebase instance (See instructions below "Create Initial Firebase Project"). Note: these instructions do not include detailed instructions for firebase administration or how to manage your new project in github (You are on your own for that).
 
-Create copy from the github template
+Create copy from the github template (GitHub repository created)
 
 - Go to https://github.com/somervda/fbmStarter/generate and create a new github project based on the fbmStarter project.
 - Get a copy of the clone link from the new project and use this in VsCode to create a local copy of your project.
 
-Or create copy as new local project
+_Or_ create copy as new local project (No GitHub repository created)
 
 - Create a new folder for the new project. Name the folder after the new project name. This folder is the "New Project folder"
 - Get a zip copy of the fbmStarter code from github https://github.com/somervda/fbmStarter/archive/master.zip
@@ -40,7 +40,7 @@ Update project name in the local copy
 
 **Application specific changes**
 
-The previous instructions will set up aa direct copy of the fbmStarter code with your new project name, application specific changes will still be needed before adding your own code.
+The previous instructions will set up a direct copy of the fbmStarter code with your new project name, application specific changes will still be needed before adding your own code.
 
 1. Use your own firebase project information(Please don't use the fbmStarter defaults, I will be periodically refreshing this firebase project to make sure it stays fresh. ). The firebase config information is stored in the src/environments folder files (environment.prod.ts and environment.ts).
 2. Set the default firebase project to be used "firebase use [project-id]", check the firebase project in use using "firebase list"
