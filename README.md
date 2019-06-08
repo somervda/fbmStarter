@@ -13,9 +13,9 @@ This project aims to provide a starting point for angular applications. Intent i
 - E2E test suite - Cypress test suite included to test fbmStarter capabilities and can be extended for applications based on fbmStarter.
 - Built/tested/optimized - Base fbmStarter capabilities are built in, tested, and optimized to ensure new applications start at a consistent and well architected starting point.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+## Creating a new new project based on fbmStarter
 
-**Creating a new new project based on fbmStarter**
+**Getting a copy of fbmStarter Project**
 
 A new project can be created based on the fbmStarter code. To do this will require a new firebase instance (See instructions below "Create Initial Firebase Project"). Note: these instructions do not include detailed instructions for firebase administration or how to manage your new project in github (You are on your own for that).
 
@@ -54,7 +54,3 @@ The previous instructions will set up aa direct copy of the fbmStarter code with
 2. When asked to register an app select the web option , enter a name and also select "Set up Hosting". Exit the startup wizard at this point.
 3. The client config information can be found under project settings -> your app -> firebase SDK settings (config option). Use the config setting in the environment files in your new angular project.
 4. Make sure a "Support eMail" is defined for the project. (Also defined in the project settings page). Google authentication provider will fail if this is not set up.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
