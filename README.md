@@ -57,7 +57,7 @@ The previous instructions will set up aa direct copy of the fbmStarter code with
 
 ## E2E Testing with Cypress
 
-The Cypress tooling (https://www.cypress.io/) is used to provide end to end testing for the fbmStarter application and any applications based on fbmStarter. **Note: cypress tests did not work well with a PWA service worker , the server worker option in the angular.json file should be set to false before running cypress tests.**
+The Cypress tooling (https://www.cypress.io/) is used to provide end to end testing for the fbmStarter application and any applications based on fbmStarter. **Note: cypress tests did not work well with a PWA service worker , the server worker option in the angular.json file should be set to false before running cypress tests, or in the chrome developer tools unregister the service worker and cached data (this will apply until the next time the client is refreshed).**
 
 Tests performed in the current test suite are
 
