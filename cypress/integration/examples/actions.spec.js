@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 it("Site opens", () => {
-  cy.visit("Open", {
+  cy.visit("", {
     onBeforeLoad: win => {
       win.sessionStorage.clear();
     }

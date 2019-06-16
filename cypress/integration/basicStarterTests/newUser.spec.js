@@ -1,0 +1,47 @@
+/// <reference types="Cypress" />
+// This test suite walks through a new user signing in . It checks
+// that the email login process works, and that the user is created as a
+// inactive user with no access to application functionality
+// User name is based on the e2eUser<time of day>.test.com email 
+
+context("Create new user", () => {
+    let now = new Date();
+    const userEmail = "e2eUser" + now.valueOf() + "@e2eTest.com";
+    
+
+    it("Site opens", () => {
+
+        cy.visit("", {
+        onBeforeLoad: win => {
+            win.sessionStorage.clear();
+        }
+        });
+    });
+
+    it("Side menu works", () => {
+        cy.get(".mat-button-wrapper > .mat-icon").click();
+
+        // cy.get(".mat-drawer-backdrop").click();
+    });
+
+    it("Logon component opens", () => {
+        //cy.get(".mat-button-wrapper > .mat-icon").click();
+        cy.get('#mainMenuLogin').click();
+        cy.contains('Sign in with Google');
+        cy.contains('Sign in with email');
+        cy.contains('Sign in with Microsoft');
+    });
+
+    it("Do email login", () => {
+        cy.log("userEmail:",userEmail);
+        cy.get(':nth-child(2) > .firebaseui-idp-button').click();
+        cy.log("Enter UserName");
+        cy.get('.mdl-textfield__input').type(userEmail);
+        cy.get('.firebaseui-id-submit').click();
+        cy.log("Enter user details");
+        cy.get(':nth-child(3) > .mdl-textfield__input').type("e2e " + now.valueOf());
+        cy.get('.firebaseui-new-password-component > .firebaseui-textfield > .mdl-textfield__input').type("password");
+        cy.get('.firebaseui-id-submit').click();
+
+    });
+});
