@@ -54,3 +54,20 @@ The previous instructions will set up aa direct copy of the fbmStarter code with
 2. When asked to register an app select the web option , enter a name and also select "Set up Hosting". Exit the startup wizard at this point.
 3. The client config information can be found under project settings -> your app -> firebase SDK settings (config option). Use the config setting in the environment files in your new angular project.
 4. Make sure a "Support eMail" is defined for the project. (Also defined in the project settings page). Google authentication provider will fail if this is not set up.
+
+## E2E Testing with Cypress
+
+The Cypress tooling (https://www.cypress.io/) is used to provide end to end testing for the fbmStarter application and any applications based on fbmStarter.
+
+**Note: cypress tests did not work well with a PWA service worker**
+The server worker option in the angular.json file should be set to false before running cypress tests, or in the chrome developer tools unregister the service worker and cached data (this will apply until the next time the client is refreshed). The enablePersistance() option in the app.module.ts file should also be disabled for testing (Only server data is used) .
+
+Tests performed in the current test suite are
+
+- Home page rendering
+- About page rendering
+- Non-activated user registration, authentication and authorization
+- Activated user , authentication and authorization.
+- Admin user , authentication and authorization and functionality
+
+Note: Appropriate test users need to be set up for user testing.
