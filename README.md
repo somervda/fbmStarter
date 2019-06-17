@@ -64,10 +64,8 @@ The server worker option in the angular.json file should be set to false before 
 
 Tests performed in the current test suite are
 
-- Home page rendering
-- About page rendering
-- Non-activated user registration, authentication and authorization
-- Activated user , authentication and authorization.
-- Admin user , authentication and authorization and functionality
+- `newUser.spec.js` : Non-activated user registration, authentication and authorization
+- `basicUser.spec.js` : Activated user , authentication and authorization.
+- `adminUser.spec.js` : Admin user , authentication and authorization and functionality
 
 Note: Appropriate test users need to be set up for user testing.
