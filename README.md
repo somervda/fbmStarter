@@ -1,6 +1,6 @@
 # FbmStarter
 
-This project aims to provide a starting point for angular applications. Intent is for designer of a new application to take a copy of this project, perform a set of standard replace operations to rename the project to the required new name and then start adding application specific code. The fbmStarter application provides the following capabilities that can be extended by the application designer.
+This project aims to provide a starting point for angular applications. Intent is for designer of a new application to take a copy of this project, perform a set of standard replace operations to rename the project to the required new name and then start adding application specific code. The fbmStarter application provides the following capabilities that can be extended by the application designer. See application at https://fbmstarter.firebaseapp.com/
 
 **fbmStarter Capabilities**
 
@@ -13,9 +13,9 @@ This project aims to provide a starting point for angular applications. Intent i
 - E2E test suite - Cypress test suite included to test fbmStarter capabilities and can be extended for applications based on fbmStarter.
 - Built/tested/optimized - Base fbmStarter capabilities are built in, tested, and optimized to ensure new applications start at a consistent and well architected starting point.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+## Creating a new new project based on fbmStarter
 
-**Creating a new new project based on fbmStarter**
+**Getting a copy of fbmStarter Project**
 
 A new project can be created based on the fbmStarter code. To do this will require a new firebase instance (See instructions below "Create Initial Firebase Project"). Note: these instructions do not include detailed instructions for firebase administration or how to manage your new project in github (You are on your own for that).
 
@@ -55,6 +55,17 @@ The previous instructions will set up a direct copy of the fbmStarter code with 
 3. The client config information can be found under project settings -> your app -> firebase SDK settings (config option). Use the config setting in the environment files in your new angular project.
 4. Make sure a "Support eMail" is defined for the project. (Also defined in the project settings page). Google authentication provider will fail if this is not set up.
 
-## Further help
+## E2E Testing with Cypress
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The Cypress tooling (https://www.cypress.io/) is used to provide end to end testing for the fbmStarter application and any applications based on fbmStarter.
+
+**Note: cypress tests did not work well with a PWA service worker**
+The server worker option in the angular.json file should be set to false before running cypress tests, or in the chrome developer tools unregister the service worker and cached data (this will apply until the next time the client is refreshed). The enablePersistance() option in the app.module.ts file should also be disabled for testing (Only server data is used) .
+
+Tests performed in the current test suite are
+
+- `newUser.spec.js` : Non-activated user registration, authentication and authorization
+- `basicUser.spec.js` : Activated user , authentication and authorization.
+- `adminUser.spec.js` : Admin user , authentication and authorization and functionality
+
+Note: Appropriate test users need to be set up for user testing.
