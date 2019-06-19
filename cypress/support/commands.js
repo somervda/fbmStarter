@@ -23,3 +23,23 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+// *******************************************************************************
+// Component test commands (Reused through test suite)
+//  - checks for component access and component content
+// *******************************************************************************
+
+Cypress.Commands.add("verifyAboutComponent", () => {
+  cy.get("#mainMenu").click();
+  cy.get("#mainMenuAbout").click();
+  // Verify component was rendered
+  cy.url().should("include", "about");
+  cy.get(".mat-card-title").contains("About");
+});
+
+Cypress.Commands.add("verifyHomeComponent", () => {
+  cy.get("#mainMenu").click();
+  cy.get("#mainMenuHome").click();
+  // Verify component was rendered
+  cy.get(".mat-card-title").contains("Code");
+});

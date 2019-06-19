@@ -18,8 +18,8 @@ context("Create new user", () => {
   });
 
   it("Side menu works", () => {
-    cy.get(".mat-button-wrapper > .mat-icon").click();
-
+    //cy.get(".mat-button-wrapper > .mat-icon").click();
+    cy.get("#mainMenu").click();
     // cy.get(".mat-drawer-backdrop").click();
   });
 
@@ -55,5 +55,13 @@ context("Create new user", () => {
       cy.log("User avitar img", img);
       expect(img).to.equal("../../assets/images/Block_user_pic.png");
     });
+  });
+
+  it("Navigate to About Page", () => {
+    cy.verifyAboutComponent();
+  });
+
+  it("Navigate to Home Page", () => {
+    cy.verifyHomeComponent();
   });
 });
