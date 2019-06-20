@@ -24,8 +24,7 @@ context("Basic user login", () => {
     cy.verifyMyProfileComponent();
   });
   it("Not administrator", () => {
-    cy.get("#mainMenu").click();
-    cy.get("mainMenuAdministration").should("not.exist");
+    cy.verifyNotAdministrator();
   });
   it("Logout", () => {
     cy.verifyLogout();

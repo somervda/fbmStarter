@@ -58,6 +58,13 @@ Cypress.Commands.add("verifyLogout", () => {
   cy.get(".user-avatar").should("not.exist");
 });
 
+Cypress.Commands.add("verifyNotAdministrator", () => {
+  cy.get("#mainMenu").click();
+  cy.get("mainMenuHome").should("exist");
+  cy.get("mainMenuAdministration").should("not.exist");
+  cy.get("#mainMenu").click();
+});
+
 Cypress.Commands.add("logonEmail", (usercode, password) => {
   cy.log("logonEmail");
   cy.get("#mainMenu").click();
