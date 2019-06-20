@@ -26,6 +26,8 @@ export class AuthService {
   user$: Observable<User>;
   loggedIn$: Observable<boolean>;
 
+  user: User;
+
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
