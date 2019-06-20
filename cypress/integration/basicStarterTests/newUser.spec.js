@@ -17,14 +17,8 @@ context("Create new user", () => {
     });
   });
 
-  it("Side menu works", () => {
-    //cy.get(".mat-button-wrapper > .mat-icon").click();
-    cy.get("#mainMenu").click();
-    // cy.get(".mat-drawer-backdrop").click();
-  });
-
   it("Logon component opens", () => {
-    //cy.get(".mat-button-wrapper > .mat-icon").click();
+    cy.get("#mainMenu").click();
     cy.get("#mainMenuLogin").click();
     cy.contains("Sign in with Google");
     cy.contains("Sign in with email");
@@ -63,5 +57,16 @@ context("Create new user", () => {
 
   it("Navigate to Home Page", () => {
     cy.verifyHomeComponent();
+  });
+  it("Not administrator", () => {
+    cy.get("#mainMenu").click();
+    cy.get("mainMenuMyProfile").should("not.exist");
+  });
+  it("Not Activated User", () => {
+    cy.get("#mainMenu").click();
+    cy.get("mainMenuAdministration").should("not.exist");
+  });
+  it("Logout", () => {
+    cy.verifyLogout();
   });
 });

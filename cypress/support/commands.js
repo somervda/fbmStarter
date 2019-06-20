@@ -43,3 +43,30 @@ Cypress.Commands.add("verifyHomeComponent", () => {
   // Verify component was rendered
   cy.get(".mat-card-title").contains("Code");
 });
+
+Cypress.Commands.add("verifyMyProfileComponent", () => {
+  cy.get("#mainMenu").click();
+  cy.get("#mainMenuMyProfile").click();
+  // Verify component was rendered
+  cy.get("h1").contains("User Profile");
+});
+
+Cypress.Commands.add("verifyLogout", () => {
+  cy.get("#mainMenu").click();
+  cy.get("#mainMenuLogout").click();
+  // Verify user was logged out
+  cy.get(".user-avatar").should("not.exist");
+});
+
+Cypress.Commands.add("logonEmail", (usercode, password) => {
+  cy.log("logonEmail");
+  cy.get("#mainMenu").click();
+  cy.get("#mainMenuLogin").click();
+  cy.contains("Sign in with email");
+  cy.get(":nth-child(2) > .firebaseui-idp-button").click();
+  cy.get(".firebaseui-id-submit").click();
+  cy.get(".mdl-textfield__input").type(usercode);
+  cy.get(".firebaseui-id-submit").click();
+  cy.get(":nth-child(3) > .mdl-textfield__input").type(password);
+  cy.get(".firebaseui-id-submit").click();
+});
