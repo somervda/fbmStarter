@@ -1,5 +1,6 @@
-// This test  walks through a basic non-admin user signing in . It checks
-// that the email login process works
+// This test  walks through a admin user signing in . It checks
+// that the email login process works and user has
+// the expected access to admin functionality
 
 /// <reference types="Cypress" />
 
@@ -12,10 +13,7 @@ context("Basic user login", () => {
     });
   });
   it("Login", () => {
-    cy.logonEmail(
-      Cypress.env("nonAdminUser"),
-      Cypress.env("nonAdminUserPassword")
-    );
+    cy.logonEmail(Cypress.env("adminUser"), Cypress.env("adminUserPassword"));
   });
   it("Navigate to About Page", () => {
     cy.verifyAboutComponent();
@@ -26,9 +24,11 @@ context("Basic user login", () => {
   it("Navigate to MyProfile", () => {
     cy.verifyMyProfileComponent();
   });
-  it("Not administrator", () => {
-    cy.verifyNotAdministrator();
+
+  it("Navigate to Admin", () => {
+    cy.verifyAdminComponent();
   });
+
   it("Logout", () => {
     cy.verifyLogout();
   });

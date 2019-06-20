@@ -1,8 +1,10 @@
 {
   "baseUrl": "http://localhost:4200/",
   "env": {
-    "testuser": "test01@comcast.net",
-    "password": "password"
+    "nonAdminUser": "test01@ourDars.com",
+    "nonAdminUserPassword": "password",
+    "adminUser": "test02@ourDars.com",
+    "adminUserPassword": "password"
   },
   "requestTimeout": 10000,
   "defaultCommandTimeout": 8000

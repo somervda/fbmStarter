@@ -54,7 +54,7 @@
                   "maximumError": "5mb"
                 }
               ],
-              "serviceWorker": false
+              "serviceWorker": true
             }
           }
         },

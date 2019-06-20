@@ -51,6 +51,17 @@ Cypress.Commands.add("verifyMyProfileComponent", () => {
   cy.get("h1").contains("User Profile");
 });
 
+Cypress.Commands.add("verifyAdminComponent", () => {
+  cy.get("#mainMenu").click();
+  cy.get("#mainMenuAdministration").click();
+  cy.get("h1").contains("Administration");
+  cy.get('[routerlink="/users"]').click();
+  cy.get("h1").contains("Users");
+  cy.contains(Cypress.env("nonAdminUser").toLowerCase()).click();
+  cy.url().should("include", "user/");
+  cy.get("h1").contains("User Profile");
+});
+
 Cypress.Commands.add("verifyLogout", () => {
   cy.get("#mainMenu").click();
   cy.get("#mainMenuLogout").click();
@@ -60,9 +71,16 @@ Cypress.Commands.add("verifyLogout", () => {
 
 Cypress.Commands.add("verifyNotAdministrator", () => {
   cy.get("#mainMenu").click();
-  cy.get("mainMenuHome").should("exist");
-  cy.get("mainMenuAdministration").should("not.exist");
+  cy.get("#mainMenuHome").should("exist");
+  cy.get("#mainMenuAdministration").should("not.exist");
+  cy.get(".mat-drawer-backdrop").click();
+});
+
+Cypress.Commands.add("verifyNotActivated", () => {
   cy.get("#mainMenu").click();
+  cy.get("#mainMenuHome").should("exist");
+  cy.get("#mainMenuMyProfile").should("not.exist");
+  cy.get(".mat-drawer-backdrop").click();
 });
 
 Cypress.Commands.add("logonEmail", (usercode, password) => {

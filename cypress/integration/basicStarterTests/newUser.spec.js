@@ -59,12 +59,10 @@ context("Create new user", () => {
     cy.verifyHomeComponent();
   });
   it("Not administrator", () => {
-    cy.get("#mainMenu").click();
-    cy.get("mainMenuMyProfile").should("not.exist");
+    cy.verifyNotAdministrator();
   });
   it("Not Activated User", () => {
-    cy.get("#mainMenu").click();
-    cy.get("mainMenuAdministration").should("not.exist");
+    cy.verifyNotActivated();
   });
   it("Logout", () => {
     cy.verifyLogout();
