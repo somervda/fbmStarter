@@ -4,7 +4,7 @@
 
 /// <reference types="Cypress" />
 
-context("Basic user login", () => {
+context("Admin user login", () => {
   it("Site opens", () => {
     cy.visit("", {
       onBeforeLoad: win => {
