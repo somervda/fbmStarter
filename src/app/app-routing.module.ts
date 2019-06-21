@@ -4,13 +4,12 @@ import { HomeComponent } from "./home/home.component";
 import { NotfoundComponent } from "./notfound/notfound.component";
 import { AboutComponent } from "./about/about.component";
 import { LoginComponent } from "./login/login.component";
-import { AdministrationComponent } from "./administration/administration.component";
 import { UsersComponent } from "./users/users.component";
 import { UserComponent } from "./user/user.component";
 import { UserResolver } from "./services/user-resolver";
-import { AdministrationGuard } from "./administration/administration.guard";
-import { UsersGuard } from "./users/users.guard";
-import { UserGuard } from "./user/user.guard";
+import { AdministrationComponent } from "./administration/administration.component";
+import { isAdminGuard } from "./guards/isAdmin.guard";
+import { isActivatedGuard } from "./guards/isActivated.guard";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -19,14 +18,14 @@ const routes: Routes = [
   {
     path: "administration",
     component: AdministrationComponent,
-    canActivate: [AdministrationGuard]
+    canActivate: [isAdminGuard]
   },
-  { path: "users", component: UsersComponent, canActivate: [UsersGuard] },
+  { path: "users", component: UsersComponent, canActivate: [isAdminGuard] },
   {
     path: "user/:uid",
     component: UserComponent,
     resolve: { user: UserResolver },
-    canActivate: [UserGuard]
+    canActivate: [isActivatedGuard]
   },
   { path: "notfound", component: NotfoundComponent },
   { path: "**", component: NotfoundComponent }

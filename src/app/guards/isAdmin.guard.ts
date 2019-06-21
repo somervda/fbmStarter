@@ -5,12 +5,11 @@ import { AuthService } from "../services/auth.service";
 @Injectable({
   providedIn: "root"
 })
-export class UserGuard implements CanActivate {
+export class isAdminGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router) {}
 
   canActivate(): boolean {
-    // Check user is signed in
-    if (this.auth.currentUser) return true;
+    if (this.auth.currentUser && this.auth.currentUser.isAdmin) return true;
     this.router.navigateByUrl("notfound");
     return false;
   }
