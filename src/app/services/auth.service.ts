@@ -56,7 +56,7 @@ export class AuthService {
       // Keep a subscription to the user$ observable alive so currentUser is maintained as a property
       this.user$.subscribe(User => {
         this.currentUser = User;
-        // console.log("Subscribe User");
+        // console.log("Update currentUser", User);
       });
     });
   }
