@@ -7,10 +7,10 @@ This project aims to provide a starting point for angular applications. Intent i
 - Angular 7+ (Version updated as new major releases of Angular occurs)
 - Firebase - fbmStarter includes firestore, authentication, hosting, firestore rules and firebase functions
 - Material Design - implements material design interface using @angular/material library. Custom material theme included to use as an example of extending base material design themes (Using SCSS and angular CDK features)
-- Authentication - Set up to use firebase authentication and firebaseui library to provide the authentication UI elements. Authentication is enterprise oriented, examples are provided of using google, email and microsoft as authentication providers. The microsoft provider should allow enterprises to use office365 accounts (as long as account access is allowed.) Some basic authorization capabilities are included (administrator role and functions)
+- Authentication - Set up to use firebase authentication and firebaseui library to provide the authentication UI elements. Authentication is enterprise oriented, examples are provided of using google, email and microsoft as authentication providers. The microsoft provider should allow enterprises to use office365 accounts (as long as account access is allowed.) Some basic authorization capabilities are included (administrator role and functions). Route Guards are set up to restrict access (CacActivate) to components/functions based on users privileges (isActivated, isAdmin)
 - Home page with carousel - Example of a home splash page as a launching point for new users. Uses bootstrap carousel component and material cards in a fairly typical home page layout (main features as images and detail cards)
 - PWA - Progressive web application, includes a service worker, desktop images, starter page etc that is required for a well behaved PWA. Caching defined for application and data to support offline operation.
-- E2E test suite - Cypress test suite included to test fbmStarter capabilities and can be extended for applications based on fbmStarter.
+- E2E test suite - Cypress test suite included to test fbmStarter capabilities and can be extended for applications based on fbmStarter (See section below for more details on e2e functionality)
 - Built/tested/optimized - Base fbmStarter capabilities are built in, tested, and optimized to ensure new applications start at a consistent and well architected starting point.
 
 ## Creating a new new project based on fbmStarter
@@ -68,4 +68,4 @@ Tests performed in the current test suite are
 - `basicUser.spec.js` : Activated user , authentication and authorization.
 - `adminUser.spec.js` : Admin user , authentication and authorization and functionality
 
-Note: Appropriate test users need to be set up for user testing.
+Note: Appropriate test users need to be set up for user testing (Admin: test01@ourDars.com, Activated user: test02@ourDars.com).
