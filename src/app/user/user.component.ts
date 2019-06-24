@@ -2,7 +2,7 @@ import { AuthService } from "./../services/auth.service";
 import { UserService } from "./../services/user.service";
 import { KeyValuePair } from "../models/key-value-pair.model";
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 import { User } from "../models/user.model";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Subscription } from "rxjs";
@@ -17,15 +17,33 @@ export class UserComponent implements OnInit, OnDestroy {
   kvps: KeyValuePair[];
   updatableProfile: boolean = false;
   userInitSub: Subscription;
+  navigationSubscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
     private afAuth: AngularFireAuth,
     private userservice: UserService,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
+    // subscribe to the router events - storing the subscription so
+    // we can unsubscribe later.
+    this.navigationSubscription = this.router.events.subscribe((e: any) => {
+      // If it is a NavigationEnd event re-initalise the component
+      if (e instanceof NavigationEnd) {
+        this.loadDisplayUser();
+      }
+    });
+
+    //Initial load
+    this.loadDisplayUser();
+  }
+
+  loadDisplayUser() {
+    console.log("initialiseInvites");
+
     //console.log("this.user", this.user);
     this.user = this.route.snapshot.data["user"];
     //console.log("this.user", this.user);
@@ -85,5 +103,6 @@ export class UserComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.userInitSub) this.userInitSub.unsubscribe();
+    if (this.navigationSubscription) this.navigationSubscription.unsubscribe();
   }
 }

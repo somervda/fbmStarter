@@ -25,14 +25,15 @@ const routes: Routes = [
     path: "user/:uid",
     component: UserComponent,
     resolve: { user: UserResolver },
-    canActivate: [isActivatedGuard]
+    canActivate: [isActivatedGuard],
+    runGuardsAndResolvers: "always"
   },
   { path: "notfound", component: NotfoundComponent },
   { path: "**", component: NotfoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: "reload" })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
