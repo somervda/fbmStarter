@@ -26,25 +26,24 @@ export class UserService {
   }
 
   findUsers(
-    filter = '', sortField, sortOrder: OrderByDirection ,
-    pageSize):  Observable<User[]> {
-      
-
+    filter = "",
+    sortField,
+    sortOrder: OrderByDirection,
+    pageSize
+  ): Observable<User[]> {
     // console.log( "findUsers",  sortField, sortOrder  ,pageSize  );
     return this.afs
-    .collection("users", ref =>  ref
-      .orderBy(sortField, sortOrder)
-      .limit(pageSize)
-    )
-    .snapshotChanges()
-    .pipe(
-      map(snaps => {
-        return convertSnaps<User>(snaps);
-        })
+      .collection("users", ref =>
+        ref.orderBy(sortField, sortOrder).limit(pageSize)
       )
-
-}
-
+      .snapshotChanges()
+      .pipe(
+        map(snaps => {
+          return convertSnaps<User>(snaps);
+        }),
+        first()
+      );
+  }
 
   dbFieldUpdate(docId: string, fieldName: string, newValue: any) {
     if (docId && fieldName) {
