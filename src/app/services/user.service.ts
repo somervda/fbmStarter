@@ -40,8 +40,7 @@ export class UserService {
       .pipe(
         map(snaps => {
           return convertSnaps<User>(snaps);
-        }),
-        first()
+        })
       );
   }
 
