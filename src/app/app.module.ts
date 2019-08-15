@@ -46,6 +46,7 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { AdministrationComponent } from "./administration/administration.component";
 import { UsersComponent } from "./users/users.component";
 import { UserComponent } from "./user/user.component";
+import { NotauthorizedComponent } from './notauthorized/notauthorized.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { UserComponent } from "./user/user.component";
     LoginComponent,
     AdministrationComponent,
     UsersComponent,
-    UserComponent
+    UserComponent,
+    NotauthorizedComponent
   ],
   imports: [
     BrowserModule,
