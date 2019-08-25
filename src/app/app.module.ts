@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from "@angular/forms";
 
 import { AngularFireModule } from "@angular/fire";
+import { AngularFirePerformanceModule } from "@angular/fire/performance";
 
 import { environment } from "../environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -46,7 +47,7 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { AdministrationComponent } from "./administration/administration.component";
 import { UsersComponent } from "./users/users.component";
 import { UserComponent } from "./user/user.component";
-import { NotauthorizedComponent } from './notauthorized/notauthorized.component';
+import { NotauthorizedComponent } from "./notauthorized/notauthorized.component";
 
 @NgModule({
   declarations: [
@@ -92,14 +93,14 @@ import { NotauthorizedComponent } from './notauthorized/notauthorized.component'
     AppRoutingModule,
     NgbCarouselModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirePerformanceModule,
     AngularFireAuthModule,
     // Allow offline operations - useful when used in combination with PWA functionality
     // AngularFirestoreModule,
     AngularFirestoreModule.enablePersistence(),
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production
-    }
-    )
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

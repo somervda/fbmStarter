@@ -10,7 +10,8 @@ export const environment = {
     databaseURL: "https://fbmstarter.firebaseio.com",
     projectId: "fbmstarter",
     storageBucket: "fbmstarter.appspot.com",
-    messagingSenderId: "290245947507"
+    messagingSenderId: "290245947507",
+    appId: "1:290245947507:web:4fad90fd477134cf"
   }
 };
 
