@@ -20,6 +20,8 @@
 .offline-indicator {
   font-size: small;
   font-weight: 200;
+  background-color: teal;
+  color: white;
 }
 
 .noOutline {
@@ -28,4 +30,12 @@
 
 .mat-sidenav {
   width: 200px;
+}
+
+@media print {
+
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
 }

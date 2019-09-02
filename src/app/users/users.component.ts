@@ -16,7 +16,7 @@ export class UsersComponent implements OnInit , AfterViewInit {
   displayedColumns= ["email","displayName","isAdmin", "isActivated","dateCreated"];
 
   
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   
   constructor(private userService : UserService) { }
   
