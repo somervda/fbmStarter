@@ -78,6 +78,12 @@ export class AuthService {
     if (!data.photoURL) {
       data.photoURL = "https://ui-avatars.com/api/?name=" + data.displayName;
     }
+
+    if (result.additionalUserInfo.isNewUser) {
+      // Placeholder to initialize app specific user fields
+      console.log("Is new user:", result);
+      // data["latitude"] = 0;
+    }
     userRef.set(data, { merge: true });
 
     return;

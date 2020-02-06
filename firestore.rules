@@ -18,32 +18,31 @@ service cloud.firestore {
           get( /databases/$(database)/documents/users/$(request.auth.uid)).data.isActivated == true;
      }
 
+    function updatingField(field) {
+      // Check to see if named field is being updated
+      return (field in request.resource.data) && resource.data[field] != request.resource.data[field];
+    }
+
 
     // ****** Document Access functionsnp
 
     // user document rules (Delete not allowed)
 
-    // 1  Own user document:  read/write (except for updates to  isAdmin and isActivated properties)
-    //                        special case is create   
-        match /users/{user} {
-          allow read , create:  if isAuthenticated() &&
+      match /users/{user} {
+          allow read :  if isAdmin() 
+                          ||
+                          (isAuthenticated() &&
+                             user==request.auth.uid)  ;
+          allow  create:  if isAuthenticated() &&
                              user==request.auth.uid ;
-          allow update: if isAuthenticated() &&
+          allow update: if (isAdmin() &&
+                             user!=request.auth.uid )
+                          ||
+                          (isAuthenticated() &&
                           user==request.auth.uid &&
-                          request.resource.data.isAdmin == resource.data.isAdmin &&
-                          request.resource.data.isActivated == resource.data.isActivated;
+                          !updatingField("isAdmin") &&
+                          !updatingField("isActivated")
+                          );
     }
-
-    // 2 isAdmin :  Other user documents  can read and write 
-        match /users/{user} {
-          allow read:  if isAdmin();
-          allow write:  if isAdmin() &&
-                             user!=request.auth.uid ;
-        }
-
-    // general rule - only logged on users can access any firestore document
-    // match /{document=**} {
-    //   allow read, write: if request.auth.uid != null;
-    // }
   }
 }
