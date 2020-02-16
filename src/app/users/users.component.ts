@@ -1,7 +1,9 @@
 import { UserService } from './../services/user.service';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { UsersDataSource } from '../services/users.datasource';
-import { MatPaginator, MatSort, MatTable, MatRow } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTable, MatRow } from '@angular/material/table';
 import { merge } from 'rxjs';
 import { tap } from 'rxjs/operators';
 

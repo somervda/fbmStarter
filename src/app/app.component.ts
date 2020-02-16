@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { AuthService } from "./services/auth.service";
 import { SwUpdate } from "@angular/service-worker";
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { Observable, fromEvent, Subscription } from "rxjs";
 
 @Component({
