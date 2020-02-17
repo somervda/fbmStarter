@@ -4,7 +4,7 @@ This project aims to provide a starting point for angular applications. Intent i
 
 **fbmStarter Capabilities**
 
-- Angular 7+ (Version updated as new major releases of Angular occurs)
+- Angular 9+ (Version updated as new major releases of Angular occurs)
 - Firebase - fbmStarter includes firestore, authentication, hosting, firestore rules and firebase functions
 - Material Design - implements material design interface using @angular/material library. Custom material theme included to use as an example of extending base material design themes (Using SCSS and angular CDK features)
 - Authentication - Set up to use firebase authentication and firebaseui library to provide the authentication UI elements. Authentication is enterprise oriented, examples are provided of using google, email and microsoft as authentication providers. The microsoft provider should allow enterprises to use office365 accounts (as long as account access is allowed.) Some basic authorization capabilities are included (administrator role and functions). Route Guards are set up to restrict access (CacActivate) to components/functions based on users privileges (isActivated, isAdmin)
