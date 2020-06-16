@@ -1,42 +1,69 @@
+<mat-spinner *ngIf="showSpinner" class="spinner_container"></mat-spinner>
+<app-subheading prompt="User Profile" matIcon="person"></app-subheading>
 <div class="page-container">
-  <h1>User Profile</h1>
   <!-- Use an array of keyValuePairs to display most of the user properties -->
-  <table>
-    <tr *ngFor="let kvp of kvps">
-      <td>
-        <b>{{ kvp.key }}</b>
-      </td>
-      <td>{{ kvp.value }}</td>
-    </tr>
-    <tr>
-      <td>
-        <b>Photo</b>
-      </td>
-      <td><img src="{{ user.photoURL }}" height="48px" /></td>
-    </tr>
-    <ng-container *ngIf="updatableProfile">
-      <tr>
-        <td>
-          <b>Is&nbsp;Administrator?</b>
-        </td>
-        <td>
-          <mat-checkbox
-            [(ngModel)]="user.isAdmin"
-            (click)="updateIsAdmin()"
-          ></mat-checkbox>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <b>Is&nbsp;Activated?</b>
-        </td>
-        <td>
-          <mat-checkbox
-            [(ngModel)]="user.isActivated"
-            (click)="updateIsActivated()"
-          ></mat-checkbox>
-        </td>
-      </tr>
-    </ng-container>
-  </table>
+  <div class="gridwrapper">
+    <div class="prompt">DisplayName</div>
+    <div>{{ (user$ | async)?.displayName }}</div>
+    <div class="prompt">UID</div>
+    <div>{{ (user$ | async)?.uid }}</div>
+    <div class="prompt">eMail</div>
+    <div>{{ (user$ | async)?.email }}</div>
+    <div class="prompt">Created</div>
+    <div>
+      {{ getDate((user$ | async)?.dateCreated) }}
+    </div>
+    <div class="prompt">Last Logon</div>
+    <div>
+      {{ getDate((user$ | async)?.dateLastLogon) }}
+    </div>
+
+    <div class="prompt">Photo</div>
+    <div>
+      <img class="photoURL" src="{{ (user$ | async)?.photoURL }}" />
+      <!-- {{ (user$ | async)?.photoURL }} -->
+
+      <div>
+        <button
+          class="add-button"
+          mat-button-raised
+          (click)="fileUpload.click()"
+        >
+          <mat-icon class="align-bottom nowrap">add</mat-icon>Upload New Photo
+        </button>
+        <div class="fileUploadMsg">{{ fileUploadMsg }}</div>
+
+        <input
+          type="file"
+          #fileUpload
+          hidden="true"
+          (change)="onUploadFile($event)"
+          multiple="false"
+          accept="image/*"
+        />
+      </div>
+    </div>
+
+    <div class="prompt">Is Administrator?</div>
+    <div>
+      <mat-checkbox
+        #isAdmin
+        [ngModel]="(user$ | async)?.isAdmin"
+        (click)="updateField('isAdmin', !isAdmin.checked)"
+        [disabled]="!fullAccess"
+        matTooltip="Administrators have open access to all functions in the system, and can manage other users"
+      ></mat-checkbox>
+    </div>
+
+    <div class="prompt">Is Activated?</div>
+    <div>
+      <mat-checkbox
+        #isActivated
+        [ngModel]="(user$ | async)?.isActivated"
+        (click)="updateField('isActivated', !isActivated.checked)"
+        [disabled]="!fullAccess"
+        matTooltip="Users must be activated before any access is provided to the system"
+      ></mat-checkbox>
+    </div>
+  </div>
 </div>

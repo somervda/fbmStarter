@@ -12,23 +12,38 @@
       </a>
 
       <!-- Logged in and activated options -->
-      <span *ngIf="(auth.loggedIn$ | async) && (auth.user$ | async)?.isActivated">
+      <span
+        *ngIf="(auth.loggedIn$ | async) && (auth.user$ | async)?.isActivated"
+      >
         <!-- User functions , if we have too many then add a navigation page  -->
-        <a mat-list-item [routerLink]="['user/', (auth.user$ | async)?.uid || '']">
+        <a
+          mat-list-item
+          [routerLink]="['myprofile/', (auth.user$ | async)?.uid || '']"
+        >
           <mat-icon>person</mat-icon>
           <span id="mainMenuMyProfile">My Profile</span>
         </a>
 
-        <!-- Administrator Functions -->
-        <a mat-list-item *ngIf="(auth.user$ | async)?.isAdmin" mat-list-item routerLink="administration">
-          <mat-icon>security</mat-icon>
-          <span id="mainMenuAdministration">Administration</span>
+        <!-- User Management -->
+        <a
+          mat-list-item
+          *ngIf="(auth.user$ | async)?.isAdmin"
+          mat-list-item
+          routerLink="users"
+        >
+          <mat-icon>how_to_reg</mat-icon>
+          <span id="mainMenuUsers">&nbsp;User Management</span>
         </a>
       </span>
       <!-- Logged in options -->
       <span *ngIf="auth.loggedIn$ | async">
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="logout" (click)="logout()" *ngIf="auth.loggedIn$ | async">
+        <a
+          mat-list-item
+          routerLink="logout"
+          (click)="logout()"
+          *ngIf="auth.loggedIn$ | async"
+        >
           <mat-icon>exit_to_app</mat-icon>
           <span id="mainMenuLogout">Logout</span>
         </a>
@@ -46,14 +61,22 @@
   </mat-sidenav>
 
   <mat-toolbar color="primary" class="no-print">
-    <button mat-icon-button class="noOutline" (click)="sidenav.open('mouse')" id="mainMenu">
+    <button
+      mat-icon-button
+      class="noOutline"
+      (click)="sidenav.open('mouse')"
+      id="mainMenu"
+    >
       <mat-icon>menu</mat-icon>
     </button>
 
     <div class="filler"></div>
-    <div *ngIf="!isConnected" style="margin-right: 20px">
+    <div *ngIf="!isConnected" style="margin-right: 20px;">
       <mat-chip-list>
-        <mat-chip class="offline-indicator" title="Application is offline and will have more limited functionality.">
+        <mat-chip
+          class="offline-indicator"
+          title="Application is offline and will have more limited functionality."
+        >
           Offline
         </mat-chip>
       </mat-chip-list>
@@ -61,9 +84,18 @@
 
     &nbsp;
     <ng-container *ngIf="auth.user$ | async as user">
-      <img *ngIf="user.isActivated" class="user-avatar" [src]="user.photoURL" [matTooltip]="user.displayName" />
-      <img *ngIf="!user.isActivated" class="user-avatar" src="../../assets/images/Block_user_pic.png"
-        matTooltip="You are not activated, contact an administrator to have your account activated to use this system." />
+      <img
+        *ngIf="user.isActivated"
+        class="user-avatar"
+        [src]="user.photoURL"
+        [matTooltip]="user.displayName"
+      />
+      <img
+        *ngIf="!user.isActivated"
+        class="user-avatar"
+        src="../../assets/images/Block_user_pic.png"
+        matTooltip="You are not activated, contact an administrator to have your account activated to use this system."
+      />
     </ng-container>
   </mat-toolbar>
   <router-outlet></router-outlet>

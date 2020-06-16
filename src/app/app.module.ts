@@ -10,6 +10,7 @@ import { environment } from "../environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 // import { AngularFireStorageModule } from "@angular/fire/storage";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -17,13 +18,14 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatChipsModule } from "@angular/material/chips";
-import { MatDividerModule
-// MatDatepickerModule,
-// MatDialogModule,
-// MatInputModule,
-// MatSelectModule,
-// MatGridListModule
- } from "@angular/material/divider";
+import {
+  MatDividerModule,
+  // MatDatepickerModule,
+  // MatDialogModule,
+  // MatInputModule,
+  // MatSelectModule,
+  // MatGridListModule
+} from "@angular/material/divider";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatPaginatorModule } from "@angular/material/paginator";
@@ -42,10 +44,11 @@ import { NotfoundComponent } from "./notfound/notfound.component";
 import { AboutComponent } from "./about/about.component";
 import { LoginComponent } from "./login/login.component";
 import { ServiceWorkerModule } from "@angular/service-worker";
-import { AdministrationComponent } from "./administration/administration.component";
 import { UsersComponent } from "./users/users.component";
 import { UserComponent } from "./user/user.component";
 import { NotauthorizedComponent } from "./notauthorized/notauthorized.component";
+import { DocPipe } from "./pipes/doc.pipe";
+import { SubheadingComponent } from "./shared/subheading/subheading.component";
 
 @NgModule({
   declarations: [
@@ -54,10 +57,11 @@ import { NotauthorizedComponent } from "./notauthorized/notauthorized.component"
     NotfoundComponent,
     AboutComponent,
     LoginComponent,
-    AdministrationComponent,
     UsersComponent,
     UserComponent,
-    NotauthorizedComponent
+    NotauthorizedComponent,
+    DocPipe,
+    SubheadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,11 +100,12 @@ import { NotauthorizedComponent } from "./notauthorized/notauthorized.component"
     // Allow offline operations - useful when used in combination with PWA functionality
     // AngularFirestoreModule,
     AngularFirestoreModule.enablePersistence(),
+    AngularFireStorageModule,
     ServiceWorkerModule.register("ngsw-worker.js", {
-      enabled: environment.production
-    })
+      enabled: environment.production,
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

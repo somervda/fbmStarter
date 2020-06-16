@@ -1,26 +1,22 @@
 //import { AuthService } from "./auth.service";
-import { auth } from "firebase/app";
 // see https://fireship.io/lessons/angularfire-google-oauth/ for
 // a detailed walk through of this authentication approach that is
 // used to extend the firebase authentication information with
 // custom user data (i.e. roles, app specific attributes)
-
 import { Injectable } from "@angular/core";
-
-import { Router } from "@angular/router";
-import { User } from "../models/user.model"; // optional
-
 import { AngularFireAuth } from "@angular/fire/auth";
 import {
   AngularFirestore,
-  AngularFirestoreDocument
+  AngularFirestoreDocument,
 } from "@angular/fire/firestore";
-
+import { Router } from "@angular/router";
+import * as firebase from "firebase";
 import { Observable, of } from "rxjs";
-import { switchMap, map } from "rxjs/operators";
+import { map, switchMap } from "rxjs/operators";
+import { User } from "../models/user.model"; // optional
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class AuthService {
   user$: Observable<User>;
@@ -36,7 +32,7 @@ export class AuthService {
   ) {
     // Get the auth state, then fetch the Firestore user document or return null
     this.user$ = this.afAuth.authState.pipe(
-      switchMap(user => {
+      switchMap((user) => {
         // Logged in
         if (user) {
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
@@ -47,14 +43,14 @@ export class AuthService {
       })
     );
 
-    this.loggedIn$ = this.afAuth.authState.pipe(map(user => !!user));
+    this.loggedIn$ = this.afAuth.authState.pipe(map((user) => !!user));
 
     // Set  up a authentication watched to reload user info when user is authenticated
     // this covers initial signon and when the user refreshes the browser.
-    this.authStateChanges = this.afAuth.auth.onAuthStateChanged(authuser => {
+    this.authStateChanges = this.afAuth.auth.onAuthStateChanged((authuser) => {
       // console.log("onAuthStateChanges authuser", authuser);
       // Keep a subscription to the user$ observable alive so currentUser is maintained as a property
-      this.user$.subscribe(User => {
+      this.user$.subscribe((User) => {
         this.currentUser = User;
         // console.log("Update currentUser", User);
       });
@@ -67,23 +63,26 @@ export class AuthService {
       `users/${result.user.uid}`
     );
 
-    const data = {
+    let data = {
       uid: result.user.uid,
       email: result.user.email,
       displayName: result.user.displayName,
-      photoURL: result.user.photoURL
+      dateLastLogon: firebase.firestore.FieldValue.serverTimestamp(),
     };
 
-    // Create a generic photoURL if auth. photoURL is null
-    if (!data.photoURL) {
-      data.photoURL = "https://ui-avatars.com/api/?name=" + data.displayName;
-    }
-
     if (result.additionalUserInfo.isNewUser) {
-      // Placeholder to initialize app specific user fields
-      console.log("Is new user:", result);
-      // data["latitude"] = 0;
+      // Placeholder to initialize app specific user fieldsy
+      data["dateCreated"] = firebase.firestore.FieldValue.serverTimestamp();
+      // If the result does not provide a photoURL from the authentication provider
+      // and its a new user then create a stand-in url
+      if (result.user.photoURL) {
+        data["photoURL"] = result.user.photoURL;
+      } else {
+        data["photoURL"] =
+          "https://ui-avatars.com/api/?name=" + data.displayName;
+      }
     }
+    console.log("updateUserData:", data, result, userRef);
     userRef.set(data, { merge: true });
 
     return;
@@ -105,13 +104,13 @@ export class AuthService {
     // the firebase library . Property value is "session"
     this.afAuth.auth
       .setPersistence("session")
-      .then(function() {
+      .then(function () {
         // Existing and future Auth states are now persisted in the current
         // session only. Closing the window would clear any existing state even
         // if a user forgets to sign out.
         // console.log("persistSeason worked");
       })
-      .catch(function(error) {
+      .catch(function (error) {
         // Handle Errors here.
         console.log("persistSeason error ", error);
       });

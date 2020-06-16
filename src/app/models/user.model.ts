@@ -4,7 +4,8 @@ export interface User {
   photoURL?: string;
   displayName?: string;
   // Date and time the user first logged into the application (used for aging)
-  dateCreated?: Date;
+  dateCreated?: Date | firebase.firestore.FieldValue;
+  dateLastLogon?: Date | firebase.firestore.FieldValue;
 
   // Simple Authorization scheme
   isAdmin?: Boolean;
