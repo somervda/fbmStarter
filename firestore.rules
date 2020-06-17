@@ -5,7 +5,7 @@ service cloud.firestore {
 
     // **************  Reusable functions ********************
     function isAuthenticated() {
-      return request.auth.uid !=null;
+      return request.auth != null;
     }
 
     function isAdmin() {
