@@ -1,9 +1,9 @@
 {
   "baseUrl": "http://localhost:4200/",
   "env": {
-    "nonAdminUser": "test01@ourDars.com",
+    "nonAdminUser": "normal@fbmstarter.com",
     "nonAdminUserPassword": "password",
-    "adminUser": "test02@ourDars.com",
+    "adminUser": "admin@fbmstarter.com",
     "adminUserPassword": "password"
   },
   "requestTimeout": 10000,

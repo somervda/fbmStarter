@@ -7,6 +7,6 @@ export const environment = {
     projectId: "fbmstarter",
     storageBucket: "fbmstarter.appspot.com",
     messagingSenderId: "290245947507",
-    appId: "1:290245947507:web:4fad90fd477134cf"
-  }
+    appId: "1:290245947507:web:4fad90fd477134cf",
+  },
 };

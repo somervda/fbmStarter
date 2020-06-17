@@ -31,6 +31,7 @@ export class AuthService {
     private router: Router
   ) {
     // Get the auth state, then fetch the Firestore user document or return null
+    console.log("constructor");
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         // Logged in
@@ -57,32 +58,33 @@ export class AuthService {
     });
   }
 
-  public updateUserData(result) {
+  public updateUserData(authUserInfo) {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
-      `users/${result.user.uid}`
+      `users/${authUserInfo.user.uid}`
     );
+    console.log("userRef", `users/${authUserInfo.user.uid}`);
 
     let data = {
-      uid: result.user.uid,
-      email: result.user.email,
-      displayName: result.user.displayName,
+      uid: authUserInfo.user.uid,
+      email: authUserInfo.user.email,
+      displayName: authUserInfo.user.displayName,
       dateLastLogon: firebase.firestore.FieldValue.serverTimestamp(),
     };
 
-    if (result.additionalUserInfo.isNewUser) {
+    if (authUserInfo.additionalUserInfo.isNewUser) {
       // Placeholder to initialize app specific user fieldsy
       data["dateCreated"] = firebase.firestore.FieldValue.serverTimestamp();
       // If the result does not provide a photoURL from the authentication provider
       // and its a new user then create a stand-in url
-      if (result.user.photoURL) {
-        data["photoURL"] = result.user.photoURL;
+      if (authUserInfo.user.photoURL) {
+        data["photoURL"] = authUserInfo.user.photoURL;
       } else {
         data["photoURL"] =
           "https://ui-avatars.com/api/?name=" + data.displayName;
       }
     }
-    console.log("updateUserData:", data, result, userRef);
+    console.log("updateUserData:", data, authUserInfo, userRef);
     userRef.set(data, { merge: true });
 
     return;

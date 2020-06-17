@@ -7,9 +7,9 @@
 context("Admin user login", () => {
   it("Site opens", () => {
     cy.visit("", {
-      onBeforeLoad: win => {
+      onBeforeLoad: (win) => {
         win.sessionStorage.clear();
-      }
+      },
     });
   });
   it("Login", () => {
@@ -25,8 +25,8 @@ context("Admin user login", () => {
     cy.verifyMyProfileComponent();
   });
 
-  it("Navigate to Admin", () => {
-    cy.verifyAdminComponent();
+  it("Navigate to Users", () => {
+    cy.verifyUsersComponent();
   });
 
   it("Logout", () => {

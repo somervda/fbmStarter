@@ -54,6 +54,7 @@ The previous instructions will set up a direct copy of the fbmStarter code with 
 2. When asked to register an app select the web option , enter a name and also select "Set up Hosting". Exit the startup wizard at this point.
 3. The client config information can be found under project settings -> your app -> firebase SDK settings (config option). Use the config setting in the environment files in your new angular project.
 4. Make sure a "Support eMail" is defined for the project. (Also defined in the project settings page). Google authentication provider will fail if this is not set up.
+5. I am using firebase storage to hold user profile pictures, enable storage in the firebase project console.
 
 ## E2E Testing with Cypress
 
@@ -68,4 +69,4 @@ Tests performed in the current test suite are
 - `basicUser.spec.js` : Activated user , authentication and authorization.
 - `adminUser.spec.js` : Admin user , authentication and authorization and functionality
 
-Note: Appropriate test users need to be set up for user testing (Admin: test01@ourDars.com, Activated user: test02@ourDars.com).
+Note: Appropriate test users need to be set up for user testing (Admin: admin@fblstarter.com, Activated user: normal@fbmstarter.com).

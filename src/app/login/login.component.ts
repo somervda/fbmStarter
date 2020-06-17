@@ -9,7 +9,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 @Component({
   selector: "login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit, OnDestroy {
   ui: firebaseui.auth.AuthUI;
@@ -42,15 +42,15 @@ export class LoginComponent implements OnInit, OnDestroy {
           customParameters: {
             // Forces account selection even when one account
             // is available.
-            prompt: "select_account"
-          }
-        }
+            prompt: "select_account",
+          },
+        },
       ],
       // Turn off the credential helper - remove to enable
-      //credentialHelper: firebaseui.auth.CredentialHelper.NONE,
+      credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       callbacks: {
-        signInSuccessWithAuthResult: this.onLoginSuccessful.bind(this)
-      }
+        signInSuccessWithAuthResult: this.onLoginSuccessful.bind(this),
+      },
     };
 
     this.ui = new firebaseui.auth.AuthUI(this.afAuth.auth);
@@ -63,14 +63,29 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.ui.delete();
   }
 
-  onLoginSuccessful(result) {
-    // console.log("Firebase UI result:", result);
-    this.auth.updateUserData(result);
+  /**
+   * Will create or update the user document
+   * @param authUserInfo User information from the authentication service
+   */
+  async onLoginSuccessful(authUserInfo) {
+    // firebase.rules is behaving badly after signon. It does not seem
+    // to have the request.auth info immediately , so added a delay
+    // in this process before doing the updateUserData.
+    // Try taking this out as I think I only need it because of however
+    // I set up my fmstarter firebase instance.
+    console.log("onLoginSuccessful:", authUserInfo);
+    await this.sleep(100);
+    console.log("onLoginSuccessful: after sleep");
+    this.auth.updateUserData(authUserInfo);
 
-    this.snackBar.open("Logon successful for " + result.user.email, "", {
-      duration: 5000
+    this.snackBar.open("Logon successful for " + authUserInfo.user.email, "", {
+      duration: 5000,
     });
 
     this.ngZone.run(() => this.router.navigateByUrl("/"));
+  }
+
+  sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
