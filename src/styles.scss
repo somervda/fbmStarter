@@ -30,3 +30,17 @@ body {
 .page-container {
   margin: 10px;
 }
+
+// Create a 2 column layout when screen is more than 500px wide
+@media (min-width: 768px) {
+  .grid2wrapper {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 10px;
+  }
+  .grid50percent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+}
