@@ -34,6 +34,7 @@
               "@firebase/database",
               "@firebase/functions",
               "@firebase/firestore",
+              "@firebase/component",
               "dialog-polyfill"
             ],
             "assets": [
@@ -54,9 +55,9 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "extractCss": true,
-              "namedChunks": false,
+              "namedChunks": true,
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -64,8 +65,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "2.2mb",
+                  "maximumError": "2.5mb"
                 },
                 {
                   "type": "anyComponentStyle",
