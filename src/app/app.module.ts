@@ -49,6 +49,7 @@ import { UserComponent } from "./user/user.component";
 import { NotauthorizedComponent } from "./notauthorized/notauthorized.component";
 import { DocPipe } from "./pipes/doc.pipe";
 import { SubheadingComponent } from "./shared/subheading/subheading.component";
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { SubheadingComponent } from "./shared/subheading/subheading.component";
     NotauthorizedComponent,
     DocPipe,
     SubheadingComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,
