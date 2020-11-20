@@ -49,7 +49,7 @@ import { UserComponent } from "./user/user.component";
 import { NotauthorizedComponent } from "./notauthorized/notauthorized.component";
 import { DocPipe } from "./pipes/doc.pipe";
 import { SubheadingComponent } from "./shared/subheading/subheading.component";
-import { TruncatePipe } from './pipes/truncate.pipe';
+import { TruncatePipe } from "./pipes/truncate.pipe";
 
 @NgModule({
   declarations: [
@@ -106,6 +106,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production,
     }),
+    // NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
