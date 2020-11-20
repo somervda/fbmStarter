@@ -35,6 +35,8 @@
               "@firebase/functions",
               "@firebase/firestore",
               "@firebase/component",
+              "@firebase/util",
+              "@firebase/auth",
               "dialog-polyfill"
             ],
             "assets": [
