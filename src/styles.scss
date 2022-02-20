@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@use '~@angular/material' as mat;
 
 @import "~firebaseui/dist/firebaseui.css";
 
@@ -9,19 +10,19 @@
 @import "~@angular/material/theming";
 
 // Include non-theme styles for core.
-@include mat-core();
+@include mat.core();
 
 // $primary: mat-palette($mat-indigo);
 // $accent: mat-palette($mat-pink);
 
 // Define a theme.
-$primary: mat-palette($mat-teal, 800);
-$accent: mat-palette($mat-deep-orange);
+$primary: mat.define-palette(mat.$teal-palette, 800);
+$accent: mat.define-palette(mat.$deep-orange-palette);
 
-$theme: mat-light-theme($primary, $accent);
+$theme: mat.define-light-theme($primary, $accent);
 
 // Include all theme styles for the components.
-@include angular-material-theme($theme);
+@include mat.all-component-themes($theme);
 
 body {
   background-color: rgb(166, 185, 181);
