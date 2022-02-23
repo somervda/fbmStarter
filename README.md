@@ -4,7 +4,7 @@ This project aims to provide a starting point for angular applications. Intent i
 
 **fbmStarter Capabilities**
 
-- Angular 11+ (Version updated as new major releases of Angular occurs)
+- Angular 13+ (Version updated as new major releases of Angular occurs)
 - Firebase - fbmStarter includes firestore, authentication, hosting, firestore rules and firebase functions
 - ngBootstrap - used to implement the Carousel control on the home page (Note: Remove ngBootstrap if special components aren't needed)
 - Material Design - implements material design interface using @angular/material library. Custom material theme included to use as an example of extending base material design themes (Using SCSS and angular CDK features)
